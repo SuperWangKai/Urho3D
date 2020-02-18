@@ -186,7 +186,7 @@ public:
     /// Return whether automatic resource reloading is enabled.
     bool GetAutoReloadResources() const { return autoReloadResources_; }
 
-    /// Return whether file watcher should watch resource directory changes.
+    /// Return whether file watcher should fully watch resource changes.
     bool GetFullResourceWatch() const { return fullResourceWatch_; }
 
     /// Return whether resources that failed to load are returned.
@@ -249,7 +249,7 @@ private:
     Vector<SharedPtr<ResourceRouter> > resourceRouters_;
     /// Automatic resource reloading flag.
     bool autoReloadResources_;
-    /// Full resource watch.
+    /// Full resource watching.
     bool fullResourceWatch_;
     /// Return failed resources flag.
     bool returnFailedResources_;

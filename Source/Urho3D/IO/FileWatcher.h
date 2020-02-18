@@ -88,7 +88,7 @@ private:
     {
         /// File change information.
         FileChange change_;
-        /// Timer used to delay reporting change
+        /// Timer used to delay reporting change.
         Timer timer_;
     };
 
@@ -106,7 +106,7 @@ private:
     float delay_;
     /// Watch subdirectories flag.
     bool watchSubDirs_;
-    /// Full watch mode.
+    /// Full watching mode.
     bool fullWatch_;
 
 #ifdef _WIN32
