@@ -453,7 +453,7 @@ void ResourceCache::SetAutoReloadResources(bool enable, bool fullResourceWatch)
                 watcher->StartWatching(resourceDirs_[i], true, fullResourceWatch_);
                 fileWatchers_.Push(watcher);
             }
-        }            
+        }
 
         autoReloadResources_ = enable;
         fullResourceWatch_ = fullResourceWatch;

@@ -96,9 +96,9 @@ private:
     SharedPtr<FileSystem> fileSystem_;
     /// The path being watched.
     String path_;
-    /// Pending changes. These will be returned and removed from the list when their timer has exceeded the delay. Used in full watch mode
+    /// Pending changes. These will be returned and removed from the list when their timer has exceeded the delay. Used in full watch mode.
     List<TimedFileChange> allChanges_;
-    /// Pending changes. These will be returned and removed from the list when their timer has exceeded the delay. Used in reloading mode
+    /// Pending changes. These will be returned and removed from the list when their timer has exceeded the delay. Used in reloading mode.
     HashMap<String, TimedFileChange> fileChanges_;
     /// Mutex for the change buffer.
     Mutex changesMutex_;
@@ -106,7 +106,7 @@ private:
     float delay_;
     /// Watch subdirectories flag.
     bool watchSubDirs_;
-    /// Only watch for file reloading.
+    /// Full watch mode.
     bool fullWatch_;
 
 #ifdef _WIN32
