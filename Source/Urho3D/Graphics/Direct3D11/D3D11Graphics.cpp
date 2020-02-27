@@ -2053,6 +2053,8 @@ bool Graphics::OpenWindow(int width, int height, bool resizable, bool borderless
         if (borderless)
             flags |= SDL_WINDOW_BORDERLESS;
 
+        //flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+
         window_ = SDL_CreateWindow(windowTitle_.CString(), position_.x_, position_.y_, width, height, flags);
     }
     else
@@ -2119,7 +2121,7 @@ bool Graphics::CreateDevice(int width, int height, int multiSample)
             nullptr,
             D3D_DRIVER_TYPE_HARDWARE,
             nullptr,
-            0,
+            D3D11_CREATE_DEVICE_DEBUG,
             nullptr,
             0,
             D3D11_SDK_VERSION,
