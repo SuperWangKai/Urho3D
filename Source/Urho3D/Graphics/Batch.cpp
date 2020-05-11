@@ -190,6 +190,7 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
     if (wireframe_)
     {
         graphics->SetShaders(vertexShader_, graphics->GetShader(PS, "Wireframe"));
+        graphics->SetDepthBias(-0.00001f, 0.0f);
     }
     else
     {
@@ -218,7 +219,7 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
             effectiveCullMode = isShadowPass ? material_->GetShadowCullMode() : material_->GetCullMode();
 
         renderer->SetCullMode(effectiveCullMode, camera);
-        if (!isShadowPass)
+        if (!isShadowPass && !wireframe_)
         {
             const BiasParameters& depthBias = material_->GetDepthBias();
             graphics->SetDepthBias(depthBias.constantBias_, depthBias.slopeScaledBias_);
