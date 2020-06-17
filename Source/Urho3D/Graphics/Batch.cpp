@@ -187,15 +187,7 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
     Texture2D* shadowMap = lightQueue_ ? lightQueue_->shadowMap_ : nullptr;
 
     // Set shaders first. The available shader parameters and their register/uniform positions depend on the currently set shaders
-    if (wireframe_)
-    {
-        graphics->SetShaders(vertexShader_, graphics->GetShader(PS, "Wireframe"));
-        graphics->SetDepthBias(-0.00001f, 0.0f);
-    }
-    else
-    {
-        graphics->SetShaders(vertexShader_, pixelShader_);
-    }
+    graphics->SetShaders(vertexShader_, pixelShader_);
 
     // Set pass / material-specific renderstates
     if (pass_ && material_)
@@ -209,6 +201,7 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
             else if (blend == BLEND_ADDALPHA)
                 blend = BLEND_SUBTRACTALPHA;
         }
+
         graphics->SetBlendMode(blend, pass_->GetAlphaToCoverage() || material_->GetAlphaToCoverage());
         graphics->SetLineAntiAlias(material_->GetLineAntiAlias());
 
@@ -219,16 +212,27 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
             effectiveCullMode = isShadowPass ? material_->GetShadowCullMode() : material_->GetCullMode();
 
         renderer->SetCullMode(effectiveCullMode, camera);
-        if (!isShadowPass && !wireframe_)
+        if (!isShadowPass)
         {
             const BiasParameters& depthBias = material_->GetDepthBias();
             graphics->SetDepthBias(depthBias.constantBias_, depthBias.slopeScaledBias_);
         }
 
         // Use the "least filled" fill mode combined from camera & material
-        graphics->SetFillMode((FillMode)(wireframe_ ? FILL_WIREFRAME : Max(camera->GetFillMode(), material_->GetFillMode())));
+        graphics->SetFillMode((FillMode)(Max(camera->GetFillMode(), material_->GetFillMode())));
         graphics->SetDepthTest(pass_->GetDepthTestMode());
         graphics->SetDepthWrite(pass_->GetDepthWrite() && allowDepthWrite);
+    }
+
+    // We explicitly override the states for wireframe mode
+    if (wireframe_)
+    {
+        graphics->SetShaders(vertexShader_, graphics->GetShader(PS, "Wireframe"));
+        graphics->SetBlendMode(BLEND_ALPHA, pass_->GetAlphaToCoverage() || material_->GetAlphaToCoverage());
+        //graphics->SetLineAntiAlias(true);
+        graphics->SetDepthTest(CMP_LESSEQUAL);
+        graphics->SetDepthBias(-0.00001f, 0.0f);
+        graphics->SetFillMode(FILL_WIREFRAME);
     }
 
     // Set global (per-frame) shader parameters
