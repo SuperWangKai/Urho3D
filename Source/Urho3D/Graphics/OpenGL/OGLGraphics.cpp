@@ -390,17 +390,6 @@ bool Graphics::SetScreenMode(int width, int height, const ScreenModeParams& para
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 #endif
 
-        if (newParams.multiSample_ > 1)
-        {
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, newParams.multiSample_);
-        }
-        else
-        {
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
-            SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
-        }
-
         SDL_Rect display_rect;
         SDL_GetDisplayBounds(newParams.monitor_, &display_rect);
         reposition = newParams.fullscreen_ || (newParams.borderless_ && width >= display_rect.w && height >= display_rect.h);
@@ -423,36 +412,55 @@ bool Graphics::SetScreenMode(int width, int height, const ScreenModeParams& para
 
         SDL_SetHint(SDL_HINT_ORIENTATIONS, orientations_.CString());
 
-        for (;;)
+#ifdef GL_ES_VERSION_2_0
+        // 24-bit depth is not always supported in GLES 2.0, so we add 16-bit as a fallback.
+        int depthSizes[] = { 24, 16 };
+        for (unsigned i = 0; i < 2; ++i)
         {
-            if (!externalWindow_)
-                window_ = SDL_CreateWindow(windowTitle_.CString(), x, y, width, height, flags);
-            else
-            {
-#ifndef __EMSCRIPTEN__
-                if (!window_)
-                    window_ = SDL_CreateWindowFrom(externalWindow_, SDL_WINDOW_OPENGL);
-                newParams.fullscreen_ = false;
+            SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, depthSizes[i]);
 #endif
-            }
+            int multiSample = newParams.multiSample_;
 
-            if (window_)
-                break;
-            else
+            while (true)
             {
-                if (newParams.multiSample_ > 1)
+                SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, multiSample > 1 ? 1 : 0);
+                SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, multiSample > 1 ? multiSample : 0);
+
+                if (!externalWindow_)
+                    window_ = SDL_CreateWindow(windowTitle_.CString(), x, y, width, height, flags);
+                else
                 {
-                    // If failed with multisampling, retry first without
-                    newParams.multiSample_ = 1;
-                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
-                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+#ifndef __EMSCRIPTEN__
+                    if (!window_)
+                        window_ = SDL_CreateWindowFrom(externalWindow_, SDL_WINDOW_OPENGL);
+                    newParams.fullscreen_ = false;
+#endif
+                }
+
+                if (!window_)
+                {
+                    if (multiSample == 1) // Tried the minimum but still failed
+                        break;
+
+                    // If failed with multisampling, retry lower sample count
+                    multiSample /= 2;
                 }
                 else
                 {
-                    URHO3D_LOGERRORF("Could not create window, root cause: '%s'", SDL_GetError());
-                    return false;
+                    newParams.multiSample_ = multiSample;
+                    break;
                 }
             }
+
+#ifdef GL_ES_VERSION_2_0
+            if (window_)
+                break;
+        }
+#endif
+        if (!window_)
+        {
+            URHO3D_LOGERRORF("Could not create window, root cause: '%s'", SDL_GetError());
+            return false;
         }
 
         // Reposition the window on the specified monitor
