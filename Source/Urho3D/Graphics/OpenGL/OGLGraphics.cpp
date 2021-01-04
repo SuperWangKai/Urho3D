@@ -53,9 +53,9 @@
 #endif
 
 #ifdef __EMSCRIPTEN__
-#include "../Input/Input.h"
-#include "../UI/Cursor.h"
-#include "../UI/UI.h"
+#include "../../Input/Input.h"
+#include "../../UI/Cursor.h"
+#include "../../UI/UI.h"
 #include <emscripten/emscripten.h>
 #include <emscripten/bind.h>
 
@@ -361,7 +361,6 @@ bool Graphics::SetScreenMode(int width, int height, const ScreenModeParams& para
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 #ifndef GL_ES_VERSION_2_0
-        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
         SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
         SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
         SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
@@ -412,51 +411,48 @@ bool Graphics::SetScreenMode(int width, int height, const ScreenModeParams& para
 
         SDL_SetHint(SDL_HINT_ORIENTATIONS, orientations_.CString());
 
-#ifdef GL_ES_VERSION_2_0
-        // 24-bit depth is not always supported in GLES 2.0, so we add 16-bit as a fallback.
-        int depthSizes[] = { 24, 16 };
-        for (unsigned i = 0; i < 2; ++i)
+        // Try 24-bit depth first, fallback to 16-bit
+        for (const int depthSize : { 24, 16 })
         {
-            SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, depthSizes[i]);
-#endif
-            int multiSample = newParams.multiSample_;
+            SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, depthSize);
 
-            while (true)
+            // Try requested multisample level first, fallback to lower levels and no multisample
+            for (int multiSample = newParams.multiSample_; multiSample > 0; multiSample /= 2)
             {
-                SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, multiSample > 1 ? 1 : 0);
-                SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, multiSample > 1 ? multiSample : 0);
+                if (multiSample > 1)
+                {
+                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, multiSample);
+                }
+                else
+                {
+                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 0);
+                    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 0);
+                }
 
                 if (!externalWindow_)
                     window_ = SDL_CreateWindow(windowTitle_.CString(), x, y, width, height, flags);
                 else
                 {
-#ifndef __EMSCRIPTEN__
+    #ifndef __EMSCRIPTEN__
                     if (!window_)
                         window_ = SDL_CreateWindowFrom(externalWindow_, SDL_WINDOW_OPENGL);
                     newParams.fullscreen_ = false;
-#endif
+    #endif
                 }
 
-                if (!window_)
+                if (window_)
                 {
-                    if (multiSample == 1) // Tried the minimum but still failed
-                        break;
-
-                    // If failed with multisampling, retry lower sample count
-                    multiSample /= 2;
-                }
-                else
-                {
+                    // TODO: We probably want to keep depthSize as well
                     newParams.multiSample_ = multiSample;
                     break;
                 }
             }
 
-#ifdef GL_ES_VERSION_2_0
             if (window_)
                 break;
         }
-#endif
+
         if (!window_)
         {
             URHO3D_LOGERRORF("Could not create window, root cause: '%s'", SDL_GetError());
