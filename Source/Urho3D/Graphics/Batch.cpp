@@ -222,17 +222,16 @@ void Batch::Prepare(View* view, Camera* camera, bool setModelTransform, bool all
         graphics->SetFillMode((FillMode)(Max(camera->GetFillMode(), material_->GetFillMode())));
         graphics->SetDepthTest(pass_->GetDepthTestMode());
         graphics->SetDepthWrite(pass_->GetDepthWrite() && allowDepthWrite);
-    }
 
-    // We explicitly override the states for wireframe mode
-    if (wireframe_)
-    {
-        graphics->SetShaders(vertexShader_, graphics->GetShader(PS, "Wireframe"));
-        graphics->SetBlendMode(BLEND_ALPHA, pass_->GetAlphaToCoverage() || material_->GetAlphaToCoverage());
-        //graphics->SetLineAntiAlias(true);
-        graphics->SetDepthTest(CMP_LESSEQUAL);
-        graphics->SetDepthBias(-0.00001f, 0.0f);
-        graphics->SetFillMode(FILL_WIREFRAME);
+        // We explicitly override the states for wireframe mode
+        if (wireframe_)
+        {
+            graphics->SetShaders(vertexShader_, graphics->GetShader(PS, "Wireframe"));
+            graphics->SetBlendMode(BLEND_ALPHA, pass_->GetAlphaToCoverage() || material_->GetAlphaToCoverage());
+            graphics->SetDepthTest(CMP_LESSEQUAL);
+            graphics->SetDepthBias(-0.00001f, 0.0f);
+            graphics->SetFillMode(FILL_WIREFRAME);
+        }
     }
 
     // Set global (per-frame) shader parameters
