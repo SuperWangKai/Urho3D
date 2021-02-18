@@ -169,8 +169,9 @@ if (URHO3D_GENERATEBINDINGS)
     set (BINDING_GENERATOR_PATH "${CMAKE_BINARY_DIR}/bin/tool/BindingGenerator")
 
     set (AS_GENERATED_FILES "AngelScript/GeneratedEnums.cpp"
-                            "AngelScript/Generated_Classes.cpp"
-                            "AngelScript/Generated_Members_HighPriority.cpp"
+                            "AngelScript/GeneratedObjectTypes.cpp"
+                            "AngelScript/GeneratedDefaultConstructors.cpp"
+                            "AngelScript/GeneratedClasses.cpp"
                             "AngelScript/Generated_Members_A.cpp"
                             "AngelScript/Generated_Members_B.cpp"
                             "AngelScript/Generated_Members_Constraint.cpp"
@@ -463,10 +464,17 @@ endif ()
 if (APPLE)
     set_property (TARGET ${TARGET_NAME} APPEND PROPERTY LINK_LIBRARIES -force_load)
 elseif (MSVC)
-    set_property (TARGET ${TARGET_NAME} APPEND PROPERTY LINK_OPTIONS /FORCE /WHOLEARCHIVE)  # Require VS 2015 Update 2 onward
+    foreach (THIRD_PARTY_LIB ${STATIC_LIBRARY_TARGETS})
+        if (NOT ${THIRD_PARTY_LIB} MATCHES boost|rapidjson|STB)  # Exclude header-only "fake" static libs
+            # Must be specified for each library https://github.com/urho3d/Urho3D/issues/2760
+            set_property (TARGET ${TARGET_NAME} APPEND PROPERTY LINK_OPTIONS /WHOLEARCHIVE:${THIRD_PARTY_LIB})  # Require VS 2015 Update 2 onward
+        endif ()
+    endforeach ()
+    set_property (TARGET ${TARGET_NAME} APPEND PROPERTY LINK_OPTIONS /FORCE)
 else ()
     set_property (TARGET ${TARGET_NAME} APPEND PROPERTY LINK_LIBRARIES -Wl,--whole-archive)
 endif ()
+
 foreach (TARGET ${STATIC_LIBRARY_TARGETS})
     set (ARCHIVE $<TARGET_FILE:${TARGET}>)
     if (NOT ${TARGET} MATCHES boost|rapidjson|STB)  # Exclude header-only "fake" static lib targets

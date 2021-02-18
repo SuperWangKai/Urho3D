@@ -22,10 +22,10 @@ static Constraint* Constraint_Constraint_Context()
 
 #ifdef URHO3D_PHYSICS
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Constraint_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Constraint* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Constraint_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Constraint* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -39,10 +39,10 @@ static Constraint2D* Constraint2D_Constraint2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Constraint2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Constraint2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Constraint2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Constraint2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -56,10 +56,10 @@ static ConstraintDistance2D* ConstraintDistance2D_ConstraintDistance2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintDistance2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintDistance2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintDistance2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintDistance2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -73,10 +73,10 @@ static ConstraintFriction2D* ConstraintFriction2D_ConstraintFriction2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintFriction2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintFriction2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintFriction2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintFriction2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -90,10 +90,10 @@ static ConstraintGear2D* ConstraintGear2D_ConstraintGear2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintGear2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintGear2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintGear2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintGear2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -107,10 +107,10 @@ static ConstraintMotor2D* ConstraintMotor2D_ConstraintMotor2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintMotor2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintMotor2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintMotor2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintMotor2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -124,10 +124,10 @@ static ConstraintMouse2D* ConstraintMouse2D_ConstraintMouse2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintMouse2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintMouse2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintMouse2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintMouse2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -141,10 +141,10 @@ static ConstraintPrismatic2D* ConstraintPrismatic2D_ConstraintPrismatic2D_Contex
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintPrismatic2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintPrismatic2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintPrismatic2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintPrismatic2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -158,10 +158,10 @@ static ConstraintPulley2D* ConstraintPulley2D_ConstraintPulley2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintPulley2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintPulley2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintPulley2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintPulley2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -175,10 +175,10 @@ static ConstraintRevolute2D* ConstraintRevolute2D_ConstraintRevolute2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintRevolute2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintRevolute2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintRevolute2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintRevolute2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -192,10 +192,10 @@ static ConstraintRope2D* ConstraintRope2D_ConstraintRope2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintRope2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintRope2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintRope2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintRope2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -209,10 +209,10 @@ static ConstraintWeld2D* ConstraintWeld2D_ConstraintWeld2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintWeld2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintWeld2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintWeld2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintWeld2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -226,10 +226,10 @@ static ConstraintWheel2D* ConstraintWheel2D_ConstraintWheel2D_Context()
 
 #ifdef URHO3D_URHO2D
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ConstraintWheel2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintWheel2D* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ConstraintWheel2D_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ConstraintWheel2D* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -289,7 +289,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint", "float get_cfm() const", asMETHODPR(Constraint, GetCFM, () const, float), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("Constraint", "Component@+ GetComponent(StringHash) const", asMETHODPR(Constraint, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
@@ -301,7 +301,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint", "ConstraintType GetConstraintType() const", asMETHODPR(Constraint, GetConstraintType, () const, ConstraintType), asCALL_THISCALL);
     engine->RegisterObjectMethod("Constraint", "ConstraintType get_constraintType() const", asMETHODPR(Constraint, GetConstraintType, () const, ConstraintType), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // void Constraint::GetDependencyNodes(PODVector<Node*>& dest) override | File: ../Physics/Constraint.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // bool Constraint::GetDisableCollision() const | File: ../Physics/Constraint.h
@@ -374,7 +374,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint", "Scene@+ GetScene() const", asMETHODPR(Constraint, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Constraint", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Constraint, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("Constraint", "StringHash GetType() const", asMETHODPR(Constraint, GetType, () const, StringHash), asCALL_THISCALL);
@@ -441,7 +441,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint", "int Refs() const", asMETHODPR(Constraint, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Constraint", "int get_refs() const", asMETHODPR(Constraint, Refs, () const, int), asCALL_THISCALL);
     // static void Constraint::RegisterObject(Context* context) | File: ../Physics/Constraint.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint::ReleaseConstraint() | File: ../Physics/Constraint.h
     engine->RegisterObjectMethod("Constraint", "void ReleaseConstraint()", asMETHODPR(Constraint, ReleaseConstraint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -658,14 +658,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint2D", "bool get_collideConnected() const", asMETHODPR(Constraint2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("Constraint2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(Constraint2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -714,7 +714,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint2D", "Scene@+ GetScene() const", asMETHODPR(Constraint2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Constraint2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Constraint2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("Constraint2D", "StringHash GetType() const", asMETHODPR(Constraint2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -778,7 +778,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Constraint2D", "int Refs() const", asMETHODPR(Constraint2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Constraint2D", "int get_refs() const", asMETHODPR(Constraint2D, Refs, () const, int), asCALL_THISCALL);
     // static void Constraint2D::RegisterObject(Context* context) | File: ../Urho2D/Constraint2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("Constraint2D", "void ReleaseJoint()", asMETHODPR(Constraint2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -961,14 +961,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintDistance2D", "bool get_collideConnected() const", asMETHODPR(ConstraintDistance2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintDistance2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintDistance2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // float ConstraintDistance2D::GetDampingRatio() const | File: ../Urho2D/ConstraintDistance2D.h
     engine->RegisterObjectMethod("ConstraintDistance2D", "float GetDampingRatio() const", asMETHODPR(ConstraintDistance2D, GetDampingRatio, () const, float), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintDistance2D", "float get_dampingRatio() const", asMETHODPR(ConstraintDistance2D, GetDampingRatio, () const, float), asCALL_THISCALL);
@@ -1032,7 +1032,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintDistance2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintDistance2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintDistance2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintDistance2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintDistance2D", "StringHash GetType() const", asMETHODPR(ConstraintDistance2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -1096,7 +1096,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintDistance2D", "int Refs() const", asMETHODPR(ConstraintDistance2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintDistance2D", "int get_refs() const", asMETHODPR(ConstraintDistance2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintDistance2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintDistance2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintDistance2D", "void ReleaseJoint()", asMETHODPR(ConstraintDistance2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -1301,14 +1301,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintFriction2D", "bool get_collideConnected() const", asMETHODPR(ConstraintFriction2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintFriction2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintFriction2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -1363,7 +1363,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintFriction2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintFriction2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintFriction2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintFriction2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintFriction2D", "StringHash GetType() const", asMETHODPR(ConstraintFriction2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -1427,7 +1427,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintFriction2D", "int Refs() const", asMETHODPR(ConstraintFriction2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintFriction2D", "int get_refs() const", asMETHODPR(ConstraintFriction2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintFriction2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintFriction2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintFriction2D", "void ReleaseJoint()", asMETHODPR(ConstraintFriction2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -1623,14 +1623,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintGear2D", "bool get_collideConnected() const", asMETHODPR(ConstraintGear2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintGear2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintGear2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -1688,7 +1688,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintGear2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintGear2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintGear2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintGear2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintGear2D", "StringHash GetType() const", asMETHODPR(ConstraintGear2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -1752,7 +1752,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintGear2D", "int Refs() const", asMETHODPR(ConstraintGear2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintGear2D", "int get_refs() const", asMETHODPR(ConstraintGear2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintGear2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintGear2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintGear2D", "void ReleaseJoint()", asMETHODPR(ConstraintGear2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -1951,14 +1951,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMotor2D", "bool get_collideConnected() const", asMETHODPR(ConstraintMotor2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintMotor2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintMotor2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // float ConstraintMotor2D::GetCorrectionFactor() const | File: ../Urho2D/ConstraintMotor2D.h
     engine->RegisterObjectMethod("ConstraintMotor2D", "float GetCorrectionFactor() const", asMETHODPR(ConstraintMotor2D, GetCorrectionFactor, () const, float), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintMotor2D", "float get_correctionFactor() const", asMETHODPR(ConstraintMotor2D, GetCorrectionFactor, () const, float), asCALL_THISCALL);
@@ -2019,7 +2019,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMotor2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintMotor2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintMotor2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintMotor2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintMotor2D", "StringHash GetType() const", asMETHODPR(ConstraintMotor2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -2083,7 +2083,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMotor2D", "int Refs() const", asMETHODPR(ConstraintMotor2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintMotor2D", "int get_refs() const", asMETHODPR(ConstraintMotor2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintMotor2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintMotor2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintMotor2D", "void ReleaseJoint()", asMETHODPR(ConstraintMotor2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -2285,14 +2285,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMouse2D", "bool get_collideConnected() const", asMETHODPR(ConstraintMouse2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintMouse2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintMouse2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // float ConstraintMouse2D::GetDampingRatio() const | File: ../Urho2D/ConstraintMouse2D.h
     engine->RegisterObjectMethod("ConstraintMouse2D", "float GetDampingRatio() const", asMETHODPR(ConstraintMouse2D, GetDampingRatio, () const, float), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintMouse2D", "float get_dampingRatio() const", asMETHODPR(ConstraintMouse2D, GetDampingRatio, () const, float), asCALL_THISCALL);
@@ -2350,7 +2350,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMouse2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintMouse2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintMouse2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintMouse2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const Vector2& ConstraintMouse2D::GetTarget() const | File: ../Urho2D/ConstraintMouse2D.h
     engine->RegisterObjectMethod("ConstraintMouse2D", "const Vector2& GetTarget() const", asMETHODPR(ConstraintMouse2D, GetTarget, () const, const Vector2&), asCALL_THISCALL);
@@ -2417,7 +2417,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintMouse2D", "int Refs() const", asMETHODPR(ConstraintMouse2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintMouse2D", "int get_refs() const", asMETHODPR(ConstraintMouse2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintMouse2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintMouse2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintMouse2D", "void ReleaseJoint()", asMETHODPR(ConstraintMouse2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -2622,14 +2622,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "bool get_collideConnected() const", asMETHODPR(ConstraintPrismatic2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintPrismatic2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // bool ConstraintPrismatic2D::GetEnableLimit() const | File: ../Urho2D/ConstraintPrismatic2D.h
@@ -2693,7 +2693,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintPrismatic2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintPrismatic2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "StringHash GetType() const", asMETHODPR(ConstraintPrismatic2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -2760,7 +2760,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "int Refs() const", asMETHODPR(ConstraintPrismatic2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "int get_refs() const", asMETHODPR(ConstraintPrismatic2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintPrismatic2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintPrismatic2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintPrismatic2D", "void ReleaseJoint()", asMETHODPR(ConstraintPrismatic2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -2971,14 +2971,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPulley2D", "bool get_collideConnected() const", asMETHODPR(ConstraintPulley2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintPulley2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintPulley2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -3042,7 +3042,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPulley2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintPulley2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintPulley2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintPulley2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintPulley2D", "StringHash GetType() const", asMETHODPR(ConstraintPulley2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -3106,7 +3106,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintPulley2D", "int Refs() const", asMETHODPR(ConstraintPulley2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintPulley2D", "int get_refs() const", asMETHODPR(ConstraintPulley2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintPulley2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintPulley2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintPulley2D", "void ReleaseJoint()", asMETHODPR(ConstraintPulley2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -3311,14 +3311,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRevolute2D", "bool get_collideConnected() const", asMETHODPR(ConstraintRevolute2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintRevolute2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintRevolute2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // bool ConstraintRevolute2D::GetEnableLimit() const | File: ../Urho2D/ConstraintRevolute2D.h
@@ -3382,7 +3382,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRevolute2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintRevolute2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintRevolute2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintRevolute2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintRevolute2D", "StringHash GetType() const", asMETHODPR(ConstraintRevolute2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -3449,7 +3449,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRevolute2D", "int Refs() const", asMETHODPR(ConstraintRevolute2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintRevolute2D", "int get_refs() const", asMETHODPR(ConstraintRevolute2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintRevolute2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintRevolute2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintRevolute2D", "void ReleaseJoint()", asMETHODPR(ConstraintRevolute2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -3657,14 +3657,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRope2D", "bool get_collideConnected() const", asMETHODPR(ConstraintRope2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintRope2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintRope2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -3722,7 +3722,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRope2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintRope2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintRope2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintRope2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintRope2D", "StringHash GetType() const", asMETHODPR(ConstraintRope2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -3786,7 +3786,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintRope2D", "int Refs() const", asMETHODPR(ConstraintRope2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintRope2D", "int get_refs() const", asMETHODPR(ConstraintRope2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintRope2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintRope2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintRope2D", "void ReleaseJoint()", asMETHODPR(ConstraintRope2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -3985,14 +3985,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWeld2D", "bool get_collideConnected() const", asMETHODPR(ConstraintWeld2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintWeld2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintWeld2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // float ConstraintWeld2D::GetDampingRatio() const | File: ../Urho2D/ConstraintWeld2D.h
     engine->RegisterObjectMethod("ConstraintWeld2D", "float GetDampingRatio() const", asMETHODPR(ConstraintWeld2D, GetDampingRatio, () const, float), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintWeld2D", "float get_dampingRatio() const", asMETHODPR(ConstraintWeld2D, GetDampingRatio, () const, float), asCALL_THISCALL);
@@ -4047,7 +4047,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWeld2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintWeld2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintWeld2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintWeld2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintWeld2D", "StringHash GetType() const", asMETHODPR(ConstraintWeld2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -4111,7 +4111,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWeld2D", "int Refs() const", asMETHODPR(ConstraintWeld2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintWeld2D", "int get_refs() const", asMETHODPR(ConstraintWeld2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintWeld2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintWeld2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintWeld2D", "void ReleaseJoint()", asMETHODPR(ConstraintWeld2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
@@ -4313,14 +4313,14 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWheel2D", "bool get_collideConnected() const", asMETHODPR(ConstraintWheel2D, GetCollideConnected, () const, bool), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("ConstraintWheel2D", "Component@+ GetComponent(StringHash) const", asMETHODPR(ConstraintWheel2D, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // float ConstraintWheel2D::GetDampingRatio() const | File: ../Urho2D/ConstraintWheel2D.h
     engine->RegisterObjectMethod("ConstraintWheel2D", "float GetDampingRatio() const", asMETHODPR(ConstraintWheel2D, GetDampingRatio, () const, float), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintWheel2D", "float get_dampingRatio() const", asMETHODPR(ConstraintWheel2D, GetDampingRatio, () const, float), asCALL_THISCALL);
@@ -4384,7 +4384,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWheel2D", "Scene@+ GetScene() const", asMETHODPR(ConstraintWheel2D, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintWheel2D", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ConstraintWheel2D, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("ConstraintWheel2D", "StringHash GetType() const", asMETHODPR(ConstraintWheel2D, GetType, () const, StringHash), asCALL_THISCALL);
@@ -4448,7 +4448,7 @@ void ASRegisterGenerated_Members_Constraint(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ConstraintWheel2D", "int Refs() const", asMETHODPR(ConstraintWheel2D, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ConstraintWheel2D", "int get_refs() const", asMETHODPR(ConstraintWheel2D, Refs, () const, int), asCALL_THISCALL);
     // static void ConstraintWheel2D::RegisterObject(Context* context) | File: ../Urho2D/ConstraintWheel2D.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void Constraint2D::ReleaseJoint() | File: ../Urho2D/Constraint2D.h
     engine->RegisterObjectMethod("ConstraintWheel2D", "void ReleaseJoint()", asMETHODPR(ConstraintWheel2D, ReleaseJoint, (), void), asCALL_THISCALL);
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h

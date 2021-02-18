@@ -33,16 +33,10 @@ static UI* UI_UI_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void UI_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UI* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void UI_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UI* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
-}
-
-// UIBatch::~UIBatch() | Implicitly-declared
-static void UIBatch_Destructor(UIBatch* ptr)
-{
-    ptr->~UIBatch();
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit UIComponent::UIComponent(Context* context) | File: ../UI/UIComponent.h
@@ -52,10 +46,17 @@ static UIComponent* UIComponent_UIComponent_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void UIComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UIComponent* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void UIComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UIComponent* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
+}
+
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void UIElement_AddTags_StringVector(UIElement* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
 }
 
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
@@ -86,6 +87,13 @@ static CScriptArray* UIElement_GetTags_void(UIElement* ptr)
     return VectorToArray<String>(result, "Array<String>");
 }
 
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void UIElement_SetTags_StringVector(UIElement* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
+}
+
 // explicit UIElement::UIElement(Context* context) | File: ../UI/UIElement.h
 static UIElement* UIElement_UIElement_Context()
 {
@@ -93,10 +101,17 @@ static UIElement* UIElement_UIElement_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void UIElement_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UIElement* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void UIElement_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UIElement* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
+}
+
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void UISelectable_AddTags_StringVector(UISelectable* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
 }
 
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
@@ -127,11 +142,18 @@ static CScriptArray* UISelectable_GetTags_void(UISelectable* ptr)
     return VectorToArray<String>(result, "Array<String>");
 }
 
-// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void UISelectable_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UISelectable* ptr, CScriptArray* exceptions, bool onlyUserData)
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void UISelectable_SetTags_StringVector(UISelectable* ptr, CScriptArray* tags_conv)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
+}
+
+// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
+static void UISelectable_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UISelectable* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
+{
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // const Vector<String>& UnknownComponent::GetXMLAttributes() const | File: ../Scene/UnknownComponent.h
@@ -142,10 +164,10 @@ static CScriptArray* UnknownComponent_GetXMLAttributes_void(UnknownComponent* pt
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void UnknownComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UnknownComponent* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void UnknownComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(UnknownComponent* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
@@ -173,7 +195,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UI", "const String& GetClipboardText() const", asMETHODPR(UI, GetClipboardText, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("UI", "const String& get_clipboardText() const", asMETHODPR(UI, GetClipboardText, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // Cursor* UI::GetCursor() const | File: ../UI/UI.h
     engine->RegisterObjectMethod("UI", "Cursor@+ GetCursor() const", asMETHODPR(UI, GetCursor, () const, Cursor*), asCALL_THISCALL);
     engine->RegisterObjectMethod("UI", "Cursor@+ get_cursor() const", asMETHODPR(UI, GetCursor, () const, Cursor*), asCALL_THISCALL);
@@ -254,7 +276,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UI", "float get_scale() const", asMETHODPR(UI, GetScale, () const, float), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("UI", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(UI, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("UI", "StringHash GetType() const", asMETHODPR(UI, GetType, () const, StringHash), asCALL_THISCALL);
@@ -475,8 +497,6 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIBatch", "void SetDefaultColor()", asMETHODPR(UIBatch, SetDefaultColor, (), void), asCALL_THISCALL);
     // UIBatch::UIBatch(UIElement* element, BlendMode blendMode, const IntRect& scissor, Texture* texture, PODVector<float>* vertexData) | File: ../UI/UIBatch.h
     // Error: type "PODVector<float>*" can not automatically bind
-    // UIBatch::~UIBatch() | Implicitly-declared
-    engine->RegisterObjectBehaviour("UIBatch", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(UIBatch_Destructor), asCALL_CDECL_OBJFIRST);
     // UIBatch& UIBatch::operator=(const UIBatch&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<UIBatch>(engine, "UIBatch");
 #ifdef REGISTER_MANUAL_PART_UIBatch
@@ -529,14 +549,14 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIComponent", "const String& get_category() const", asMETHODPR(UIComponent, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("UIComponent", "Component@+ GetComponent(StringHash) const", asMETHODPR(UIComponent, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -583,7 +603,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIComponent", "Scene@+ GetScene() const", asMETHODPR(UIComponent, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("UIComponent", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(UIComponent, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // Texture2D* UIComponent::GetTexture() const | File: ../UI/UIComponent.h
     engine->RegisterObjectMethod("UIComponent", "Texture2D@+ GetTexture() const", asMETHODPR(UIComponent, GetTexture, () const, Texture2D*), asCALL_THISCALL);
@@ -650,7 +670,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIComponent", "int Refs() const", asMETHODPR(UIComponent, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("UIComponent", "int get_refs() const", asMETHODPR(UIComponent, Refs, () const, int), asCALL_THISCALL);
     // static void UIComponent::RegisterObject(Context* context) | File: ../UI/UIComponent.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("UIComponent", asBEHAVE_RELEASE, "void f()", asMETHODPR(UIComponent, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -779,7 +799,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "void AddTags(const String&in, int8 = ';')", asMETHODPR(UIElement, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("UIElement", "void AddTags(Array<String>@+)", asFUNCTION(UIElement_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "void AdjustScissor(IntRect&)", asMETHODPR(UIElement, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -794,7 +814,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // Not registered because template
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(UIElement, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void UIElement::DisableLayoutUpdate() | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "void DisableLayoutUpdate()", asMETHODPR(UIElement, DisableLayoutUpdate, (), void), asCALL_THISCALL);
@@ -854,11 +874,11 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIElement", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(UIElement, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(UIElement, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "const IntVector2& GetChildOffset() const", asMETHODPR(UIElement, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -873,11 +893,11 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(UIElement_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntRect& UIElement::GetClipBorder() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "const IntRect& GetClipBorder() const", asMETHODPR(UIElement, GetClipBorder, () const, const IntRect&), asCALL_THISCALL);
@@ -894,7 +914,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIElement", "IntRect GetCombinedScreenRect()", asMETHODPR(UIElement, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     engine->RegisterObjectMethod("UIElement", "IntRect get_combinedScreenRect()", asMETHODPR(UIElement, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void UIElement::GetDebugDrawBatches(PODVector<UIBatch>& batches, PODVector<float>& vertexData, const IntRect& currentScissor) | File: ../UI/UIElement.h
     // Error: type "PODVector<UIBatch>&" can not automatically bind
     // XMLFile* UIElement::GetDefaultStyle(bool recursiveUp=true) const | File: ../UI/UIElement.h
@@ -1045,7 +1065,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIElement", "bool get_sortChildren() const", asMETHODPR(UIElement, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("UIElement", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(UIElement, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "Array<String>@ GetTags() const", asFUNCTION(UIElement_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -1211,7 +1231,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UIElement", "int Refs() const", asMETHODPR(UIElement, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("UIElement", "int get_refs() const", asMETHODPR(UIElement, Refs, () const, int), asCALL_THISCALL);
     // static void UIElement::RegisterObject(Context* context) | File: ../UI/UIElement.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("UIElement", asBEHAVE_RELEASE, "void f()", asMETHODPR(UIElement, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -1454,7 +1474,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UIElement", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(UIElement, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("UIElement", "void SetTags(Array<String>@+)", asFUNCTION(UIElement_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("UIElement", "void SetTemporary(bool)", asMETHODPR(UIElement, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("UIElement", "void set_temporary(bool)", asMETHODPR(UIElement, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -1539,7 +1559,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "void AddTags(const String&in, int8 = ';')", asMETHODPR(UISelectable, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("UISelectable", "void AddTags(Array<String>@+)", asFUNCTION(UISelectable_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "void AdjustScissor(IntRect&)", asMETHODPR(UISelectable, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -1554,7 +1574,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // Not registered because template
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(UISelectable, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void UIElement::DisableLayoutUpdate() | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "void DisableLayoutUpdate()", asMETHODPR(UISelectable, DisableLayoutUpdate, (), void), asCALL_THISCALL);
@@ -1614,11 +1634,11 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UISelectable", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(UISelectable, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(UISelectable, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "const IntVector2& GetChildOffset() const", asMETHODPR(UISelectable, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -1633,11 +1653,11 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(UISelectable_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntRect& UIElement::GetClipBorder() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "const IntRect& GetClipBorder() const", asMETHODPR(UISelectable, GetClipBorder, () const, const IntRect&), asCALL_THISCALL);
@@ -1654,7 +1674,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UISelectable", "IntRect GetCombinedScreenRect()", asMETHODPR(UISelectable, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     engine->RegisterObjectMethod("UISelectable", "IntRect get_combinedScreenRect()", asMETHODPR(UISelectable, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void UIElement::GetDebugDrawBatches(PODVector<UIBatch>& batches, PODVector<float>& vertexData, const IntRect& currentScissor) | File: ../UI/UIElement.h
     // Error: type "PODVector<UIBatch>&" can not automatically bind
     // XMLFile* UIElement::GetDefaultStyle(bool recursiveUp=true) const | File: ../UI/UIElement.h
@@ -1811,7 +1831,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UISelectable", "bool get_sortChildren() const", asMETHODPR(UISelectable, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("UISelectable", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(UISelectable, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "Array<String>@ GetTags() const", asFUNCTION(UISelectable_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -1977,7 +1997,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UISelectable", "int Refs() const", asMETHODPR(UISelectable, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("UISelectable", "int get_refs() const", asMETHODPR(UISelectable, Refs, () const, int), asCALL_THISCALL);
     // static void UISelectable::RegisterObject(Context* context) | File: ../UI/UISelectable.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("UISelectable", asBEHAVE_RELEASE, "void f()", asMETHODPR(UISelectable, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -2226,7 +2246,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("UISelectable", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(UISelectable, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("UISelectable", "void SetTags(Array<String>@+)", asFUNCTION(UISelectable_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("UISelectable", "void SetTemporary(bool)", asMETHODPR(UISelectable, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("UISelectable", "void set_temporary(bool)", asMETHODPR(UISelectable, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -2352,14 +2372,14 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UnknownComponent", "const String& get_category() const", asMETHODPR(UnknownComponent, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("UnknownComponent", "Component@+ GetComponent(StringHash) const", asMETHODPR(UnknownComponent, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -2400,7 +2420,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UnknownComponent", "Scene@+ GetScene() const", asMETHODPR(UnknownComponent, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("UnknownComponent", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(UnknownComponent, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // StringHash UnknownComponent::GetType() const override | File: ../Scene/UnknownComponent.h
     engine->RegisterObjectMethod("UnknownComponent", "StringHash GetType() const", asMETHODPR(UnknownComponent, GetType, () const, StringHash), asCALL_THISCALL);
@@ -2472,7 +2492,7 @@ void ASRegisterGenerated_Members_U(asIScriptEngine* engine)
     engine->RegisterObjectMethod("UnknownComponent", "int Refs() const", asMETHODPR(UnknownComponent, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("UnknownComponent", "int get_refs() const", asMETHODPR(UnknownComponent, Refs, () const, int), asCALL_THISCALL);
     // static void UnknownComponent::RegisterObject(Context* context) | File: ../Scene/UnknownComponent.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("UnknownComponent", asBEHAVE_RELEASE, "void f()", asMETHODPR(UnknownComponent, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h

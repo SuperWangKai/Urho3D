@@ -40,8 +40,8 @@ Urho3D is greatly inspired by OGRE (http://www.ogre3d.org) and Horde3D
   http://warp.povusers.org/SortComparison/
 
 Urho3D uses the following third-party libraries:
-- AngelScript 2.33.0+ (http://www.angelcode.com/angelscript)
-- Boost 1.64.0 (http://www.boost.org) - only used for AngelScript generic bindings
+- AngelScript 2.35.1 WIP (http://www.angelcode.com/angelscript)
+- Boost 1.75.0 (http://www.boost.org) - only used for AngelScript generic bindings
 - Box2D 2.3.2 WIP (http://box2d.org)
 - Bullet 3.06+ (http://www.bulletphysics.org)
 - Civetweb 1.7 (https://github.com/civetweb/civetweb)
@@ -69,6 +69,7 @@ Urho3D uses the following third-party libraries:
 - tolua++ 1.0.93 (defunct - http://www.codenix.com/~tolua)
 - WebP (https://chromium.googlesource.com/webm/libwebp)
 - ETCPACK (https://github.com/Ericsson/ETCPACK)
+- Tracy 0.7.6 (https://github.com/wolfpld/tracy)
 
 DXT / PVRTC decompression code based on the Squish library and the Oolong
 Engine.

@@ -22,17 +22,17 @@ static Component* Component_Component_Context_template()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Component_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Component* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Component_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Component* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Object_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Object* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Object_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Object* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Resource::Resource(Context* context) | File: ../Resource/Resource.h
@@ -42,10 +42,10 @@ static Resource* Resource_Resource_Context_template()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Resource_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Resource* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Resource_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool_template(Resource* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 template <class T> void RegisterComponent(asIScriptEngine* engine, const char* className)
@@ -103,14 +103,14 @@ template <class T> void RegisterComponent(asIScriptEngine* engine, const char* c
     engine->RegisterObjectMethod(className, "const String& get_category() const", asMETHODPR(T, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod(className, "Component@+ GetComponent(StringHash) const", asMETHODPR(T, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -151,7 +151,7 @@ template <class T> void RegisterComponent(asIScriptEngine* engine, const char* c
     engine->RegisterObjectMethod(className, "Scene@+ GetScene() const", asMETHODPR(T, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "Object@+ GetSubsystem(StringHash) const", asMETHODPR(T, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "StringHash GetType() const", asMETHODPR(T, GetType, () const, StringHash), asCALL_THISCALL);
@@ -215,7 +215,7 @@ template <class T> void RegisterComponent(asIScriptEngine* engine, const char* c
     engine->RegisterObjectMethod(className, "int Refs() const", asMETHODPR(T, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod(className, "int get_refs() const", asMETHODPR(T, Refs, () const, int), asCALL_THISCALL);
     // static void Animatable::RegisterObject(Context* context) | File: ../Scene/Animatable.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour(className, asBEHAVE_RELEASE, "void f()", asMETHODPR(T, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -345,7 +345,7 @@ template <class T> void RegisterObject(asIScriptEngine* engine, const char* clas
     engine->RegisterObjectMethod(className, "const String& GetCategory() const", asMETHODPR(T, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod(className, "const String& get_category() const", asMETHODPR(T, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "VariantMap& GetEventDataMap() const", asMETHODPR(T, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -360,7 +360,7 @@ template <class T> void RegisterObject(asIScriptEngine* engine, const char* clas
     engine->RegisterObjectMethod(className, "const VariantMap& get_globalVars() const", asMETHODPR(T, GetGlobalVars, () const, const VariantMap&), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "Object@+ GetSubsystem(StringHash) const", asMETHODPR(T, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "StringHash GetType() const", asMETHODPR(T, GetType, () const, StringHash), asCALL_THISCALL);
@@ -457,7 +457,7 @@ template <class T> void RegisterResource(asIScriptEngine* engine, const char* cl
     engine->RegisterObjectMethod(className, "const String& GetCategory() const", asMETHODPR(T, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod(className, "const String& get_category() const", asMETHODPR(T, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "VariantMap& GetEventDataMap() const", asMETHODPR(T, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -480,7 +480,7 @@ template <class T> void RegisterResource(asIScriptEngine* engine, const char* cl
     engine->RegisterObjectMethod(className, "StringHash GetNameHash() const", asMETHODPR(T, GetNameHash, () const, StringHash), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "Object@+ GetSubsystem(StringHash) const", asMETHODPR(T, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod(className, "StringHash GetType() const", asMETHODPR(T, GetType, () const, StringHash), asCALL_THISCALL);

@@ -33,10 +33,17 @@ static Light* Light_Light_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Light_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Light* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Light_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Light* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
+}
+
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void LineEdit_AddTags_StringVector(LineEdit* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
 }
 
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
@@ -73,17 +80,25 @@ static LineEdit* LineEdit_LineEdit_Context()
     return new LineEdit(GetScriptContext());
 }
 
-// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void LineEdit_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(LineEdit* ptr, CScriptArray* exceptions, bool onlyUserData)
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void LineEdit_SetTags_StringVector(LineEdit* ptr, CScriptArray* tags_conv)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
 }
 
-// ListBase::~ListBase() | Implicitly-declared
-static void ListBase_Destructor(ListBase* ptr)
+// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
+static void LineEdit_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(LineEdit* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    ptr->~ListBase();
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
+}
+
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void ListView_AddTags_StringVector(ListView* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
 }
 
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
@@ -142,17 +157,24 @@ static ListView* ListView_ListView_Context()
 }
 
 // void ListView::SetSelections(const PODVector<unsigned>& indices) | File: ../UI/ListView.h
-static void ListView_SetSelections_PODVectorunsigned(ListView* ptr, CScriptArray* indices)
+static void ListView_SetSelections_PODVectorunsigned(ListView* ptr, CScriptArray* indices_conv)
 {
-    PODVector<unsigned> param0 = ArrayToPODVector<unsigned>(indices);
-    ptr->SetSelections(param0);
+    PODVector<unsigned> indices = ArrayToPODVector<unsigned>(indices_conv);
+    ptr->SetSelections(indices);
+}
+
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void ListView_SetTags_StringVector(ListView* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ListView_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ListView* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ListView_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ListView* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Localization::Localization(Context* context) | File: ../Resource/Localization.h
@@ -162,10 +184,10 @@ static Localization* Localization_Localization_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Localization_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Localization* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Localization_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Localization* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Log::Log(Context* context) | File: ../IO/Log.h
@@ -175,47 +197,17 @@ static Log* Log_Log_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Log_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Log* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Log_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Log* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void LogicComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(LogicComponent* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void LogicComponent_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(LogicComponent* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
-}
-
-// LightBatchQueue::~LightBatchQueue() | Implicitly-declared
-static void LightBatchQueue_Destructor(LightBatchQueue* ptr)
-{
-    ptr->~LightBatchQueue();
-}
-
-// LightQueryResult::~LightQueryResult() | Implicitly-declared
-static void LightQueryResult_Destructor(LightQueryResult* ptr)
-{
-    ptr->~LightQueryResult();
-}
-
-// LinkedListNode::~LinkedListNode() | Implicitly-declared
-static void LinkedListNode_Destructor(LinkedListNode* ptr)
-{
-    ptr->~LinkedListNode();
-}
-
-// ListIteratorBase::~ListIteratorBase() | Implicitly-declared
-static void ListIteratorBase_Destructor(ListIteratorBase* ptr)
-{
-    ptr->~ListIteratorBase();
-}
-
-// ListNodeBase::~ListNodeBase() | Implicitly-declared
-static void ListNodeBase_Destructor(ListNodeBase* ptr)
-{
-    ptr->~ListNodeBase();
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
@@ -292,14 +284,14 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Light", "Color get_colorFromTemperature() const", asMETHODPR(Light, GetColorFromTemperature, () const, Color), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("Light", "Component@+ GetComponent(StringHash) const", asMETHODPR(Light, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // float Drawable::GetDistance() const | File: ../Graphics/Drawable.h
@@ -458,7 +450,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Light", "float get_specularIntensity() const", asMETHODPR(Light, GetSpecularIntensity, () const, float), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Light", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Light, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // float Light::GetTemperature() const | File: ../Graphics/Light.h
     engine->RegisterObjectMethod("Light", "float GetTemperature() const", asMETHODPR(Light, GetTemperature, () const, float), asCALL_THISCALL);
@@ -582,7 +574,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Light", "int Refs() const", asMETHODPR(Light, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Light", "int get_refs() const", asMETHODPR(Light, Refs, () const, int), asCALL_THISCALL);
     // static void Light::RegisterObject(Context* context) | File: ../Graphics/Light.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("Light", asBEHAVE_RELEASE, "void f()", asMETHODPR(Light, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -837,7 +829,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "void AddTags(const String&in, int8 = ';')", asMETHODPR(LineEdit, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("LineEdit", "void AddTags(Array<String>@+)", asFUNCTION(LineEdit_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "void AdjustScissor(IntRect&)", asMETHODPR(LineEdit, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -852,7 +844,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Not registered because template
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(LineEdit, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void UIElement::DisableLayoutUpdate() | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "void DisableLayoutUpdate()", asMETHODPR(LineEdit, DisableLayoutUpdate, (), void), asCALL_THISCALL);
@@ -918,11 +910,11 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LineEdit", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(LineEdit, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(LineEdit, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "const IntVector2& GetChildOffset() const", asMETHODPR(LineEdit, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -937,11 +929,11 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(LineEdit_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntRect& UIElement::GetClipBorder() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "const IntRect& GetClipBorder() const", asMETHODPR(LineEdit, GetClipBorder, () const, const IntRect&), asCALL_THISCALL);
@@ -958,7 +950,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LineEdit", "IntRect GetCombinedScreenRect()", asMETHODPR(LineEdit, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     engine->RegisterObjectMethod("LineEdit", "IntRect get_combinedScreenRect()", asMETHODPR(LineEdit, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // BorderImage* LineEdit::GetCursor() const | File: ../UI/LineEdit.h
     engine->RegisterObjectMethod("LineEdit", "BorderImage@+ GetCursor() const", asMETHODPR(LineEdit, GetCursor, () const, BorderImage*), asCALL_THISCALL);
     engine->RegisterObjectMethod("LineEdit", "BorderImage@+ get_cursor() const", asMETHODPR(LineEdit, GetCursor, () const, BorderImage*), asCALL_THISCALL);
@@ -1141,7 +1133,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LineEdit", "bool get_sortChildren() const", asMETHODPR(LineEdit, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("LineEdit", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(LineEdit, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "Array<String>@ GetTags() const", asFUNCTION(LineEdit_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -1332,7 +1324,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LineEdit", "int Refs() const", asMETHODPR(LineEdit, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("LineEdit", "int get_refs() const", asMETHODPR(LineEdit, Refs, () const, int), asCALL_THISCALL);
     // static void LineEdit::RegisterObject(Context* context) | File: ../UI/LineEdit.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("LineEdit", asBEHAVE_RELEASE, "void f()", asMETHODPR(LineEdit, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -1619,7 +1611,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("LineEdit", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(LineEdit, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("LineEdit", "void SetTags(Array<String>@+)", asFUNCTION(LineEdit_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("LineEdit", "void SetTemporary(bool)", asMETHODPR(LineEdit, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("LineEdit", "void set_temporary(bool)", asMETHODPR(LineEdit, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -1720,8 +1712,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
 
     // void ListBase::Swap(ListBase& rhs) | File: ../Container/ListBase.h
     engine->RegisterObjectMethod("ListBase", "void Swap(ListBase&)", asMETHODPR(ListBase, Swap, (ListBase&), void), asCALL_THISCALL);
-    // ListBase::~ListBase() | Implicitly-declared
-    engine->RegisterObjectBehaviour("ListBase", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(ListBase_Destructor), asCALL_CDECL_OBJFIRST);
     // ListBase& ListBase::operator=(const ListBase&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<ListBase>(engine, "ListBase");
 #ifdef REGISTER_MANUAL_PART_ListBase
@@ -1741,7 +1731,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "void AddTags(const String&in, int8 = ';')", asMETHODPR(ListView, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("ListView", "void AddTags(Array<String>@+)", asFUNCTION(ListView_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "void AdjustScissor(IntRect&)", asMETHODPR(ListView, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -1762,7 +1752,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ListView", "void CopySelectedItemsToClipboard() const", asMETHODPR(ListView, CopySelectedItemsToClipboard, () const, void), asCALL_THISCALL);
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(ListView, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void ListView::DisableInternalLayoutUpdate() | File: ../UI/ListView.h
     engine->RegisterObjectMethod("ListView", "void DisableInternalLayoutUpdate()", asMETHODPR(ListView, DisableInternalLayoutUpdate, (), void), asCALL_THISCALL);
@@ -1843,11 +1833,11 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ListView", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(ListView, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(ListView, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "const IntVector2& GetChildOffset() const", asMETHODPR(ListView, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -1862,11 +1852,11 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(ListView_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // bool ListView::GetClearSelectionOnDefocus() const | File: ../UI/ListView.h
     engine->RegisterObjectMethod("ListView", "bool GetClearSelectionOnDefocus() const", asMETHODPR(ListView, GetClearSelectionOnDefocus, () const, bool), asCALL_THISCALL);
@@ -1889,7 +1879,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ListView", "UIElement@+ GetContentElement() const", asMETHODPR(ListView, GetContentElement, () const, UIElement*), asCALL_THISCALL);
     engine->RegisterObjectMethod("ListView", "UIElement@+ get_contentElement() const", asMETHODPR(ListView, GetContentElement, () const, UIElement*), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void UIElement::GetDebugDrawBatches(PODVector<UIBatch>& batches, PODVector<float>& vertexData, const IntRect& currentScissor) | File: ../UI/UIElement.h
     // Error: type "PODVector<UIBatch>&" can not automatically bind
     // XMLFile* UIElement::GetDefaultStyle(bool recursiveUp=true) const | File: ../UI/UIElement.h
@@ -2096,7 +2086,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ListView", "bool get_sortChildren() const", asMETHODPR(ListView, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ListView", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ListView, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "Array<String>@ GetTags() const", asFUNCTION(ListView_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -2276,7 +2266,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ListView", "int Refs() const", asMETHODPR(ListView, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ListView", "int get_refs() const", asMETHODPR(ListView, Refs, () const, int), asCALL_THISCALL);
     // static void ListView::RegisterObject(Context* context) | File: ../UI/ListView.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("ListView", asBEHAVE_RELEASE, "void f()", asMETHODPR(ListView, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -2579,7 +2569,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ListView", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(ListView, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("ListView", "void SetTags(Array<String>@+)", asFUNCTION(ListView_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("ListView", "void SetTemporary(bool)", asMETHODPR(ListView, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("ListView", "void set_temporary(bool)", asMETHODPR(ListView, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -2691,7 +2681,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Localization", "const String& GetCategory() const", asMETHODPR(Localization, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("Localization", "const String& get_category() const", asMETHODPR(Localization, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Localization", "VariantMap& GetEventDataMap() const", asMETHODPR(Localization, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -2719,7 +2709,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Localization", "int get_numLanguages() const", asMETHODPR(Localization, GetNumLanguages, () const, int), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Localization", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Localization, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("Localization", "StringHash GetType() const", asMETHODPR(Localization, GetType, () const, StringHash), asCALL_THISCALL);
@@ -2824,7 +2814,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Log", "const String& GetCategory() const", asMETHODPR(Log, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("Log", "const String& get_category() const", asMETHODPR(Log, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Log", "VariantMap& GetEventDataMap() const", asMETHODPR(Log, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -2845,7 +2835,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Log", "int get_level() const", asMETHODPR(Log, GetLevel, () const, int), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Log", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Log, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // bool Log::GetTimeStamp() const | File: ../IO/Log.h
     engine->RegisterObjectMethod("Log", "bool GetTimeStamp() const", asMETHODPR(Log, GetTimeStamp, () const, bool), asCALL_THISCALL);
@@ -2995,14 +2985,14 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LogicComponent", "const String& get_category() const", asMETHODPR(LogicComponent, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("LogicComponent", "Component@+ GetComponent(StringHash) const", asMETHODPR(LogicComponent, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -3043,7 +3033,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LogicComponent", "Scene@+ GetScene() const", asMETHODPR(LogicComponent, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("LogicComponent", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(LogicComponent, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("LogicComponent", "StringHash GetType() const", asMETHODPR(LogicComponent, GetType, () const, StringHash), asCALL_THISCALL);
@@ -3105,7 +3095,7 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     engine->RegisterObjectMethod("LogicComponent", "int Refs() const", asMETHODPR(LogicComponent, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("LogicComponent", "int get_refs() const", asMETHODPR(LogicComponent, Refs, () const, int), asCALL_THISCALL);
     // static void Animatable::RegisterObject(Context* context) | File: ../Scene/Animatable.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("LogicComponent", asBEHAVE_RELEASE, "void f()", asMETHODPR(LogicComponent, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -3237,8 +3227,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Error: type "PODVector<Light*>" can not automatically bind
     // PODVector<Batch> LightBatchQueue::volumeBatches_ | File: ../Graphics/Batch.h
     // Error: type "PODVector<Batch>" can not automatically bind
-    // LightBatchQueue::~LightBatchQueue() | Implicitly-declared
-    engine->RegisterObjectBehaviour("LightBatchQueue", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(LightBatchQueue_Destructor), asCALL_CDECL_OBJFIRST);
     // LightBatchQueue& LightBatchQueue::operator=(const LightBatchQueue&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<LightBatchQueue>(engine, "LightBatchQueue");
 #ifdef REGISTER_MANUAL_PART_LightBatchQueue
@@ -3265,8 +3253,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Not registered because array
     // float LightQueryResult::shadowNearSplits_[MAX_LIGHT_SPLITS] | File: ../Graphics/View.h
     // Not registered because array
-    // LightQueryResult::~LightQueryResult() | Implicitly-declared
-    engine->RegisterObjectBehaviour("LightQueryResult", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(LightQueryResult_Destructor), asCALL_CDECL_OBJFIRST);
     // LightQueryResult& LightQueryResult::operator=(const LightQueryResult&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<LightQueryResult>(engine, "LightQueryResult");
 #ifdef REGISTER_MANUAL_PART_LightQueryResult
@@ -3275,8 +3261,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
 
     // LinkedListNode* LinkedListNode::next_ | File: ../Container/LinkedList.h
     // LinkedListNode* can not be registered
-    // LinkedListNode::~LinkedListNode() | Implicitly-declared
-    engine->RegisterObjectBehaviour("LinkedListNode", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(LinkedListNode_Destructor), asCALL_CDECL_OBJFIRST);
     // LinkedListNode& LinkedListNode::operator=(const LinkedListNode&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<LinkedListNode>(engine, "LinkedListNode");
 #ifdef REGISTER_MANUAL_PART_LinkedListNode
@@ -3293,8 +3277,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // Error: type "ListNodeBase*" can not automatically bind
     // bool ListIteratorBase::operator==(const ListIteratorBase& rhs) const | File: ../Container/ListBase.h
     engine->RegisterObjectMethod("ListIteratorBase", "bool opEquals(const ListIteratorBase&in) const", asMETHODPR(ListIteratorBase, operator==, (const ListIteratorBase&) const, bool), asCALL_THISCALL);
-    // ListIteratorBase::~ListIteratorBase() | Implicitly-declared
-    engine->RegisterObjectBehaviour("ListIteratorBase", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(ListIteratorBase_Destructor), asCALL_CDECL_OBJFIRST);
     // ListIteratorBase& ListIteratorBase::operator=(const ListIteratorBase&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<ListIteratorBase>(engine, "ListIteratorBase");
 #ifdef REGISTER_MANUAL_PART_ListIteratorBase
@@ -3305,8 +3287,6 @@ void ASRegisterGenerated_Members_L(asIScriptEngine* engine)
     // ListNodeBase* can not be registered
     // ListNodeBase* ListNodeBase::prev_ | File: ../Container/ListBase.h
     // ListNodeBase* can not be registered
-    // ListNodeBase::~ListNodeBase() | Implicitly-declared
-    engine->RegisterObjectBehaviour("ListNodeBase", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(ListNodeBase_Destructor), asCALL_CDECL_OBJFIRST);
     // ListNodeBase& ListNodeBase::operator=(const ListNodeBase&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<ListNodeBase>(engine, "ListNodeBase");
 #ifdef REGISTER_MANUAL_PART_ListNodeBase

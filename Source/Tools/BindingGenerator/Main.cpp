@@ -35,6 +35,7 @@ namespace ASBindingGenerator
 {
     void ProcessAllEnums();
     void ProcessAllClasses(const string& outputBasePath);
+    void ProcessAllClassesNew();
     void ProcessAllGlobalVariables();
     void ProcessAllGlobalFunctions();
     void SaveResult(const string& outputBasePath);
@@ -43,6 +44,7 @@ namespace ASBindingGenerator
     {
         ProcessAllEnums();
         ProcessAllClasses(outputBasePath);
+        ProcessAllClassesNew();
         ProcessAllGlobalVariables();
         ProcessAllGlobalFunctions();
         SaveResult(outputBasePath);
@@ -73,8 +75,8 @@ namespace CSBindingGenerator
 int main(int argc, char* argv[])
 {
 #ifdef DEVELOP
-    string inputDir = R"(G:/MyGames/Urho3DFork/Build/Source/Tools/BindingGenerator/generated/xml)";
-    string outputBasePath = R"(G:/MyGames/Urho3DFork/Urho3D)";
+    string inputDir = R"(G:/MyGames/Urho3DCurrent/Build/Source/Tools/BindingGenerator/generated/xml)";
+    string outputBasePath = R"(G:/MyGames/Urho3DCurrent/Urho3D)";
 #else
     if (argc != 3)
         return -1;

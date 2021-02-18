@@ -27,10 +27,10 @@ static CScriptArray* Zone_GetVertexLights_void(Zone* ptr)
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Zone_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Zone* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Zone_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Zone* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Zone::Zone(Context* context) | File: ../Graphics/Zone.h
@@ -113,14 +113,14 @@ void ASRegisterGenerated_Members_Z(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Zone", "const String& get_category() const", asMETHODPR(Zone, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("Zone", "Component@+ GetComponent(StringHash) const", asMETHODPR(Zone, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // float Drawable::GetDistance() const | File: ../Graphics/Drawable.h
@@ -228,7 +228,7 @@ void ASRegisterGenerated_Members_Z(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Zone", "float GetSortValue() const", asMETHODPR(Zone, GetSortValue, () const, float), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Zone", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Zone, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("Zone", "StringHash GetType() const", asMETHODPR(Zone, GetType, () const, StringHash), asCALL_THISCALL);
@@ -344,7 +344,7 @@ void ASRegisterGenerated_Members_Z(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Zone", "int Refs() const", asMETHODPR(Zone, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Zone", "int get_refs() const", asMETHODPR(Zone, Refs, () const, int), asCALL_THISCALL);
     // static void Zone::RegisterObject(Context* context) | File: ../Graphics/Zone.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("Zone", asBEHAVE_RELEASE, "void f()", asMETHODPR(Zone, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h

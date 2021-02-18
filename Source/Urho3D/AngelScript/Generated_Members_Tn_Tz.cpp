@@ -12,6 +12,13 @@ namespace Urho3D
 void FakeAddRef(void* ptr);
 void FakeReleaseRef(void* ptr);
 
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void ToolTip_AddTags_StringVector(ToolTip* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
+}
+
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
 static CScriptArray* ToolTip_GetChildren_void(ToolTip* ptr)
 {
@@ -40,6 +47,13 @@ static CScriptArray* ToolTip_GetTags_void(ToolTip* ptr)
     return VectorToArray<String>(result, "Array<String>");
 }
 
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void ToolTip_SetTags_StringVector(ToolTip* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
+}
+
 // explicit ToolTip::ToolTip(Context* context) | File: ../UI/ToolTip.h
 static ToolTip* ToolTip_ToolTip_Context()
 {
@@ -47,22 +61,16 @@ static ToolTip* ToolTip_ToolTip_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void ToolTip_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ToolTip* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void ToolTip_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(ToolTip* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // TrailPoint::TrailPoint(const Vector3& position, const Vector3& forward) | File: ../Graphics/RibbonTrail.h
 static void TrailPoint_TrailPoint_Vector3_Vector3(TrailPoint* ptr, const Vector3 &position, const Vector3 &forward)
 {
     new(ptr) TrailPoint(position, forward);
-}
-
-// TrailPoint::~TrailPoint() | Implicitly-declared
-static void TrailPoint_Destructor(TrailPoint* ptr)
-{
-    ptr->~TrailPoint();
 }
 
 #ifdef URHO3D_PHYSICS
@@ -94,7 +102,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "void AddTags(const String&in, int8 = ';')", asMETHODPR(ToolTip, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("ToolTip", "void AddTags(Array<String>@+)", asFUNCTION(ToolTip_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "void AdjustScissor(IntRect&)", asMETHODPR(ToolTip, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -109,7 +117,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     // Not registered because template
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(ToolTip, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void UIElement::DisableLayoutUpdate() | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "void DisableLayoutUpdate()", asMETHODPR(ToolTip, DisableLayoutUpdate, (), void), asCALL_THISCALL);
@@ -169,11 +177,11 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ToolTip", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(ToolTip, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(ToolTip, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "const IntVector2& GetChildOffset() const", asMETHODPR(ToolTip, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -188,11 +196,11 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(ToolTip_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntRect& UIElement::GetClipBorder() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "const IntRect& GetClipBorder() const", asMETHODPR(ToolTip, GetClipBorder, () const, const IntRect&), asCALL_THISCALL);
@@ -209,7 +217,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ToolTip", "IntRect GetCombinedScreenRect()", asMETHODPR(ToolTip, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     engine->RegisterObjectMethod("ToolTip", "IntRect get_combinedScreenRect()", asMETHODPR(ToolTip, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void UIElement::GetDebugDrawBatches(PODVector<UIBatch>& batches, PODVector<float>& vertexData, const IntRect& currentScissor) | File: ../UI/UIElement.h
     // Error: type "PODVector<UIBatch>&" can not automatically bind
     // XMLFile* UIElement::GetDefaultStyle(bool recursiveUp=true) const | File: ../UI/UIElement.h
@@ -363,7 +371,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ToolTip", "bool get_sortChildren() const", asMETHODPR(ToolTip, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("ToolTip", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(ToolTip, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "Array<String>@ GetTags() const", asFUNCTION(ToolTip_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -529,7 +537,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     engine->RegisterObjectMethod("ToolTip", "int Refs() const", asMETHODPR(ToolTip, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("ToolTip", "int get_refs() const", asMETHODPR(ToolTip, Refs, () const, int), asCALL_THISCALL);
     // static void ToolTip::RegisterObject(Context* context) | File: ../UI/ToolTip.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("ToolTip", asBEHAVE_RELEASE, "void f()", asMETHODPR(ToolTip, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -777,7 +785,7 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("ToolTip", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(ToolTip, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("ToolTip", "void SetTags(Array<String>@+)", asFUNCTION(ToolTip_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("ToolTip", "void SetTemporary(bool)", asMETHODPR(ToolTip, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("ToolTip", "void set_temporary(bool)", asMETHODPR(ToolTip, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -896,8 +904,6 @@ void ASRegisterGenerated_Members_Tn_Tz(asIScriptEngine* engine)
     engine->RegisterObjectProperty("TrailPoint", "float sortDistance", offsetof(TrailPoint, sortDistance_));
     // TrailPoint::TrailPoint(const Vector3& position, const Vector3& forward) | File: ../Graphics/RibbonTrail.h
     engine->RegisterObjectBehaviour("TrailPoint", asBEHAVE_CONSTRUCT, "void f(const Vector3&in, const Vector3&in)", asFUNCTION(TrailPoint_TrailPoint_Vector3_Vector3), asCALL_CDECL_OBJFIRST);
-    // TrailPoint::~TrailPoint() | Implicitly-declared
-    engine->RegisterObjectBehaviour("TrailPoint", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(TrailPoint_Destructor), asCALL_CDECL_OBJFIRST);
     // TrailPoint& TrailPoint::operator=(const TrailPoint&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<TrailPoint>(engine, "TrailPoint");
 #ifdef REGISTER_MANUAL_PART_TrailPoint

@@ -37,64 +37,6 @@ ASGeneratedFile_WithRegistrationFunction::ASGeneratedFile_WithRegistrationFuncti
 
 // ============================================================================
 
-void ASGeneratedFile_Classes::Save()
-{
-    ofstream out(outputFilePath_);
-
-    out <<
-        "// DO NOT EDIT. This file is generated\n"
-        "\n"
-        "// We need register all types before registration of any functions because functions can use any types\n"
-        "\n"
-        "#include \"../Precompiled.h\"\n"
-        "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n"
-        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
-        "\n"
-        "namespace Urho3D\n"
-        "{\n"
-        "\n"
-        "void " << functionName_ << "(asIScriptEngine* engine)\n"
-        "{\n"
-        << reg_.str() <<
-        "}\n"
-        "\n"
-        "}\n";
-}
-
-// ============================================================================
-
-void ASGeneratedFile_Members_HighPriority::Save()
-{
-    ofstream out(outputFilePath_);
-
-    out <<
-        "// DO NOT EDIT. This file is generated\n"
-        "\n"
-        "// We need register default constructors before any members to allow using in Array<type>\n"
-        "\n"
-        "#include \"../Precompiled.h\"\n"
-        "#include \"../AngelScript/APITemplates.h\"\n"
-        "\n"
-        "#include \"../AngelScript/GeneratedIncludes.h\"\n"
-        "\n"
-        "namespace Urho3D\n"
-        "{\n"
-        "\n"
-        "void FakeAddRef(void* ptr);\n"
-        "void FakeReleaseRef(void* ptr);\n"
-        "\n"
-        << glue_.str() <<
-        "void " << functionName_ << "(asIScriptEngine* engine)\n"
-        "{\n"
-        << reg_.str() <<
-        "}\n"
-        "\n"
-        "}\n";
-}
-
-// ============================================================================
-
 void ASGeneratedFile_Members::Save()
 {
     ofstream out(outputFilePath_);
@@ -182,6 +124,14 @@ bool ProcessedGlobalFunction::operator <(const ProcessedGlobalFunction& rhs) con
 }
 
 bool ProcessedGlobalVariable::operator <(const ProcessedGlobalVariable& rhs) const
+{
+    if (insideDefine_ != rhs.insideDefine_)
+        return insideDefine_ < rhs.insideDefine_;
+
+    return name_ < rhs.name_;
+}
+
+bool ProcessedClass::operator <(const ProcessedClass& rhs) const
 {
     if (insideDefine_ != rhs.insideDefine_)
         return insideDefine_ < rhs.insideDefine_;
@@ -381,9 +331,7 @@ namespace Result
             "\n"
             "namespace Urho3D\n"
             "{\n"
-            "\n";
-
-        ofs <<
+            "\n"
             "void ASRegisterGeneratedGlobalVariables(asIScriptEngine* engine)\n"
             "{\n";
 
@@ -424,6 +372,278 @@ namespace Result
             "}\n"
             "\n"
             "}\n";
+    }
+    // ============================================================================
+
+    vector<ProcessedClass> classes_;
+
+    // Write result to GeneratedObjectTypes.cpp
+    static void SaveObjectTypes(const string& outputBasePath)
+    {
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedObjectTypes.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "// We need register all types before registration of any functions because functions can use any types\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n"
+            "\n"
+            "void ASRegisterGeneratedObjectTypes(asIScriptEngine* engine)\n"
+            "{\n";
+
+        string openedDefine;
+        bool isFirst = true;
+
+        for (const ProcessedClass& processedClass : classes_)
+        {
+            if (processedClass.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (!isFirst)
+                ofs << "\n";
+
+            if (processedClass.insideDefine_ != openedDefine && !processedClass.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << processedClass.insideDefine_ << "\n";
+                openedDefine = processedClass.insideDefine_;
+            }
+
+            ofs
+                << "    // " << processedClass.comment_ << "\n"
+                << "    " << processedClass.objectTypeRegistration_ << "\n";
+
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    // Write result to GeneratedDefaultConstructors.cpp
+    static void SaveDefaultConstructors(const string& outputBasePath)
+    {
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedDefaultConstructors.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "// We need register default constructors before any members to allow using in Array<type>\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n";
+
+        string openedDefine;
+
+        for (const ProcessedClass& processedClass : classes_)
+        {
+            if (!processedClass.defaultConstructor_)
+                continue;
+
+            if (processedClass.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "\n#endif\n";
+                openedDefine.clear();
+            }
+
+            ofs << "\n";
+
+            if (processedClass.insideDefine_ != openedDefine && !processedClass.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << processedClass.insideDefine_ << "\n\n";
+                openedDefine = processedClass.insideDefine_;
+            }
+
+             ofs <<
+                 "// " << processedClass.defaultConstructor_->comment_ << "\n" <<
+                 processedClass.defaultConstructor_->glue_;
+        }
+
+        if (!openedDefine.empty())
+        {
+            ofs << "\n#endif\n";
+            openedDefine.clear();
+        }
+
+        ofs <<
+            "\n"
+            "void ASRegisterGeneratedDefaultConstructors(asIScriptEngine* engine)\n"
+            "{\n";
+
+        bool isFirst = true;
+
+        for (const ProcessedClass& processedClass : classes_)
+        {
+            if (!processedClass.defaultConstructor_)
+                continue;
+
+            if (processedClass.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (!isFirst)
+                ofs << "\n";
+
+            if (processedClass.insideDefine_ != openedDefine && !processedClass.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << processedClass.insideDefine_ << "\n";
+                openedDefine = processedClass.insideDefine_;
+            }
+
+            ofs <<
+                "    // " << processedClass.defaultConstructor_->comment_ << "\n" <<
+                "    " << processedClass.defaultConstructor_->registration_ << "\n";
+
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    // Write result to GeneratedClasses.cpp
+    static void SaveGeneratedClasses(const string& outputBasePath)
+    {
+        ofstream ofs(outputBasePath + "/Source/Urho3D/AngelScript/GeneratedClasses.cpp");
+
+        ofs <<
+            "// DO NOT EDIT. This file is generated\n"
+            "\n"
+            "#include \"../Precompiled.h\"\n"
+            "#include \"../AngelScript/APITemplates.h\"\n"
+            "\n"
+            "#include \"../AngelScript/GeneratedIncludes.h\"\n"
+            "#include \"../AngelScript/Manual.h\"\n"
+            "\n"
+            "namespace Urho3D\n"
+            "{\n"
+            "\n"
+            "void FakeAddRef(void* ptr);\n"
+            "void FakeReleaseRef(void* ptr);\n";
+
+        string openedDefine;
+        
+        for (const ProcessedClass& processedClass : classes_)
+        {
+            if (processedClass.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "\n#endif // def " << openedDefine << "\n";
+                openedDefine.clear();
+            }
+
+            ofs << "\n";
+
+            if (processedClass.insideDefine_ != openedDefine && !processedClass.insideDefine_.empty())
+            {
+                ofs << "#ifdef " << processedClass.insideDefine_ << "\n\n";
+                openedDefine = processedClass.insideDefine_;
+            }
+
+            if (processedClass.destructor_)
+            {
+                ofs <<
+                    "// " << processedClass.destructor_->comment_ << "\n"
+                    << processedClass.destructor_->glue_ <<
+                    "\n";
+            }
+
+            ofs <<
+                "// " << processedClass.comment_ << "\n"
+                "static void Register_" << processedClass.name_ << "(asIScriptEngine* engine)\n"
+                "{\n";
+
+            /*
+            for (string nonDefaultConstructor : processedClass.nonDefaultConstructors_)
+                ofs << "    // " << nonDefaultConstructor << "\n";
+                */
+
+            if (processedClass.destructor_)
+            {
+                ofs <<
+                    "    // " << processedClass.destructor_->comment_ << "\n"
+                    "    " << processedClass.destructor_->registration_ << "\n";
+            }
+
+            ofs << "}\n";
+
+        }
+
+        if (!openedDefine.empty())
+        {
+            ofs << "\n#endif // def " << openedDefine << "\n";
+            openedDefine.clear();
+        }
+
+        ofs <<
+            "\n"
+            "void ASRegisterGeneratedClasses(asIScriptEngine* engine)\n"
+            "{\n";
+
+        bool isFirst = true;
+
+        for (const ProcessedClass& processedClass : classes_)
+        {
+            if (processedClass.insideDefine_ != openedDefine && !openedDefine.empty())
+            {
+                ofs << "#endif\n";
+                openedDefine.clear();
+            }
+
+            if (processedClass.insideDefine_ != openedDefine && !processedClass.insideDefine_.empty())
+            {
+                if (!isFirst)
+                    ofs << "\n";
+
+                ofs << "#ifdef " << processedClass.insideDefine_ << "\n";
+                openedDefine = processedClass.insideDefine_;
+            }
+
+            ofs << "    Register_" << processedClass.name_ << "(engine);\n";
+
+            isFirst = false;
+        }
+
+        if (!openedDefine.empty())
+            ofs << "#endif\n";
+
+        ofs <<
+            "}\n"
+            "\n"
+            "}\n";
+    }
+
+    static void SaveClasses(const string& outputBasePath)
+    {
+        sort(classes_.begin(), classes_.end());
+        SaveObjectTypes(outputBasePath);
+        SaveDefaultConstructors(outputBasePath);
+        SaveGeneratedClasses(outputBasePath);
     }
 
     // ============================================================================
@@ -542,6 +762,7 @@ void SaveResult(const string& outputBasePath)
     Result::SaveEnums(outputBasePath);
     Result::SaveGlobalFunctions(outputBasePath);
     Result::SaveGlobalVariables(outputBasePath);
+    Result::SaveClasses(outputBasePath);
     Result::SaveIncludes(outputBasePath);
 }
 

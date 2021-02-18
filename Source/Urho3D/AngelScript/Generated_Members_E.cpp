@@ -19,18 +19,18 @@ static Engine* Engine_Engine_Context()
 }
 
 // static VariantMap Engine::ParseParameters(const Vector<String>& arguments) | File: ../Engine/Engine.h
-static VariantMap Engine_ParseParameters_VectorString(CScriptArray* arguments)
+static VariantMap Engine_ParseParameters_VectorString(CScriptArray* arguments_conv)
 {
-    Vector<String> param0 = ArrayToVector<String>(arguments);
-    VariantMap result = Engine::ParseParameters(param0);
+    Vector<String> arguments = ArrayToVector<String>(arguments_conv);
+    VariantMap result = Engine::ParseParameters(arguments);
     return result;
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Engine_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Engine* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Engine_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Engine* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit EventProfiler::EventProfiler(Context* context) | File: ../Core/EventProfiler.h
@@ -40,10 +40,10 @@ static EventProfiler* EventProfiler_EventProfiler_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void EventProfiler_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(EventProfiler* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void EventProfiler_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(EventProfiler* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // EventReceiverGroup::EventReceiverGroup() | File: ../Core/Context.h
@@ -85,7 +85,7 @@ void ASRegisterGenerated_Members_E(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Engine", "const String& GetCategory() const", asMETHODPR(Engine, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("Engine", "const String& get_category() const", asMETHODPR(Engine, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Engine", "VariantMap& GetEventDataMap() const", asMETHODPR(Engine, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -118,7 +118,7 @@ void ASRegisterGenerated_Members_E(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Engine", "bool get_pauseMinimized() const", asMETHODPR(Engine, GetPauseMinimized, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Engine", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Engine, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // int Engine::GetTimeStepSmoothing() const | File: ../Engine/Engine.h
     engine->RegisterObjectMethod("Engine", "int GetTimeStepSmoothing() const", asMETHODPR(Engine, GetTimeStepSmoothing, () const, int), asCALL_THISCALL);
@@ -269,7 +269,7 @@ void ASRegisterGenerated_Members_E(asIScriptEngine* engine)
     engine->RegisterObjectMethod("EventProfiler", "const String& GetCategory() const", asMETHODPR(EventProfiler, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("EventProfiler", "const String& get_category() const", asMETHODPR(EventProfiler, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // const ProfilerBlock* Profiler::GetCurrentBlock() | File: ../Core/Profiler.h
     // Error: type "ProfilerBlock" can not automatically bind bacause have @nobind mark
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -288,7 +288,7 @@ void ASRegisterGenerated_Members_E(asIScriptEngine* engine)
     // Error: type "ProfilerBlock" can not automatically bind bacause have @nobind mark
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("EventProfiler", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(EventProfiler, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("EventProfiler", "StringHash GetType() const", asMETHODPR(EventProfiler, GetType, () const, StringHash), asCALL_THISCALL);

@@ -22,10 +22,10 @@ static IKConstraint* IKConstraint_IKConstraint_Context()
 
 #ifdef URHO3D_IK
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void IKConstraint_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKConstraint* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void IKConstraint_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKConstraint* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -39,10 +39,10 @@ static IKEffector* IKEffector_IKEffector_Context()
 
 #ifdef URHO3D_IK
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void IKEffector_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKEffector* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void IKEffector_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKEffector* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -56,10 +56,10 @@ static IKSolver* IKSolver_IKSolver_Context()
 
 #ifdef URHO3D_IK
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void IKSolver_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKSolver* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void IKSolver_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IKSolver* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 #endif
 
@@ -98,10 +98,10 @@ static Image* Image_Image_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Image_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Image* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Image_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Image* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit IndexBuffer::IndexBuffer(Context* context, bool forceHeadless=false) | File: ../Graphics/IndexBuffer.h
@@ -111,10 +111,10 @@ static IndexBuffer* IndexBuffer_IndexBuffer_Context_bool(bool forceHeadless=fals
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void IndexBuffer_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IndexBuffer* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void IndexBuffer_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(IndexBuffer* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Input::Input(Context* context) | File: ../Input/Input.h
@@ -124,10 +124,10 @@ static Input* Input_Input_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Input_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Input* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void Input_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Input* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // IntRect::IntRect(const IntVector2& min, const IntVector2& max) noexcept | File: ../Math/Rect.h
@@ -164,18 +164,6 @@ static void IntVector3_IntVector3_int_int_int(IntVector3* ptr, int x, int y, int
 static void IntVector3_IntVector3_IntVector3(IntVector3* ptr, const IntVector3 &rhs)
 {
     new(ptr) IntVector3(rhs);
-}
-
-// IndexBufferDesc::~IndexBufferDesc() | Implicitly-declared
-static void IndexBufferDesc_Destructor(IndexBufferDesc* ptr)
-{
-    ptr->~IndexBufferDesc();
-}
-
-// InstanceData::~InstanceData() | Implicitly-declared
-static void InstanceData_Destructor(InstanceData* ptr)
-{
-    ptr->~InstanceData();
 }
 
 void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
@@ -227,14 +215,14 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKConstraint", "const String& get_category() const", asMETHODPR(IKConstraint, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("IKConstraint", "Component@+ GetComponent(StringHash) const", asMETHODPR(IKConstraint, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -281,7 +269,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKConstraint", "float GetStretchiness() const", asMETHODPR(IKConstraint, GetStretchiness, () const, float), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("IKConstraint", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(IKConstraint, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("IKConstraint", "StringHash GetType() const", asMETHODPR(IKConstraint, GetType, () const, StringHash), asCALL_THISCALL);
@@ -347,7 +335,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKConstraint", "int Refs() const", asMETHODPR(IKConstraint, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("IKConstraint", "int get_refs() const", asMETHODPR(IKConstraint, Refs, () const, int), asCALL_THISCALL);
     // static void IKConstraint::RegisterObject(Context* context) | File: ../IK/IKConstraint.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("IKConstraint", asBEHAVE_RELEASE, "void f()", asMETHODPR(IKConstraint, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -522,14 +510,14 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKEffector", "uint get_chainLength() const", asMETHODPR(IKEffector, GetChainLength, () const, unsigned), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("IKEffector", "Component@+ GetComponent(StringHash) const", asMETHODPR(IKEffector, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
     // template<class T> void Component::GetComponents(PODVector<T*>& dest) const | File: ../Scene/Component.h
     // Not registered because template
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -580,7 +568,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKEffector", "Scene@+ GetScene() const", asMETHODPR(IKEffector, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("IKEffector", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(IKEffector, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const String& IKEffector::GetTargetName() const | File: ../IK/IKEffector.h
     engine->RegisterObjectMethod("IKEffector", "const String& GetTargetName() const", asMETHODPR(IKEffector, GetTargetName, () const, const String&), asCALL_THISCALL);
@@ -665,7 +653,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKEffector", "int Refs() const", asMETHODPR(IKEffector, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("IKEffector", "int get_refs() const", asMETHODPR(IKEffector, Refs, () const, int), asCALL_THISCALL);
     // static void IKEffector::RegisterObject(Context* context) | File: ../IK/IKEffector.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("IKEffector", asBEHAVE_RELEASE, "void f()", asMETHODPR(IKEffector, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -880,7 +868,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKSolver", "const String& get_category() const", asMETHODPR(IKSolver, GetCategory, () const, const String&), asCALL_THISCALL);
     // Component* Component::GetComponent(StringHash type) const | File: ../Scene/Component.h
     engine->RegisterObjectMethod("IKSolver", "Component@+ GetComponent(StringHash) const", asMETHODPR(IKSolver, GetComponent, (StringHash) const, Component*), asCALL_THISCALL);
-    // template<class T> T*  Component::GetComponent() const | File: ../Scene/Component.h
+    // template<class T> T* Component::GetComponent() const | File: ../Scene/Component.h
     // Not registered because template
     // void Component::GetComponents(PODVector<Component*>& dest, StringHash type) const | File: ../Scene/Component.h
     // Error: type "PODVector<Component*>&" can not automatically bind
@@ -890,7 +878,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKSolver", "bool GetCONSTRAINTS() const", asMETHODPR(IKSolver, GetCONSTRAINTS, () const, bool), asCALL_THISCALL);
     engine->RegisterObjectMethod("IKSolver", "bool get_CONSTRAINTS() const", asMETHODPR(IKSolver, GetCONSTRAINTS, () const, bool), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void Component::GetDependencyNodes(PODVector<Node*>& dest) | File: ../Scene/Component.h
     // Error: type "PODVector<Node*>&" can not automatically bind
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
@@ -939,7 +927,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKSolver", "Scene@+ GetScene() const", asMETHODPR(IKSolver, GetScene, () const, Scene*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("IKSolver", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(IKSolver, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // bool IKSolver::GetTARGET_ROTATIONS() const | File: ../IK/IKSolver.h
     engine->RegisterObjectMethod("IKSolver", "bool GetTARGET_ROTATIONS() const", asMETHODPR(IKSolver, GetTARGET_ROTATIONS, () const, bool), asCALL_THISCALL);
@@ -1024,7 +1012,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IKSolver", "int Refs() const", asMETHODPR(IKSolver, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("IKSolver", "int get_refs() const", asMETHODPR(IKSolver, Refs, () const, int), asCALL_THISCALL);
     // static void IKSolver::RegisterObject(Context* context) | File: ../IK/IKSolver.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("IKSolver", asBEHAVE_RELEASE, "void f()", asMETHODPR(IKSolver, ReleaseRef, (), void), asCALL_THISCALL);
     // void Component::Remove() | File: ../Scene/Component.h
@@ -1212,7 +1200,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     // CompressedLevel Image::GetCompressedLevel(unsigned index) const | File: ../Resource/Image.h
     engine->RegisterObjectMethod("Image", "CompressedLevel GetCompressedLevel(uint) const", asMETHODPR(Image, GetCompressedLevel, (unsigned) const, CompressedLevel), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // unsigned char* Image::GetData() const | File: ../Resource/Image.h
     // Error: type "unsigned char*" can not automatically bind
     // SharedPtr<Image> Image::GetDecompressedImage() const | File: ../Resource/Image.h
@@ -1272,7 +1260,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Image", "Image@+ GetSubimage(const IntRect&in) const", asMETHODPR(Image, GetSubimage, (const IntRect&) const, Image*), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Image", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Image, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("Image", "StringHash GetType() const", asMETHODPR(Image, GetType, () const, StringHash), asCALL_THISCALL);
@@ -1336,7 +1324,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Image", "int Refs() const", asMETHODPR(Image, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Image", "int get_refs() const", asMETHODPR(Image, Refs, () const, int), asCALL_THISCALL);
     // static void Image::RegisterObject(Context* context) | File: ../Resource/Image.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("Image", asBEHAVE_RELEASE, "void f()", asMETHODPR(Image, ReleaseRef, (), void), asCALL_THISCALL);
     // void Resource::ResetUseTimer() | File: ../Resource/Resource.h
@@ -1445,7 +1433,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("IndexBuffer", "const String& GetCategory() const", asMETHODPR(IndexBuffer, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("IndexBuffer", "const String& get_category() const", asMETHODPR(IndexBuffer, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("IndexBuffer", "VariantMap& GetEventDataMap() const", asMETHODPR(IndexBuffer, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -1476,7 +1464,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     // Error: type "SharedArrayPtr<unsigned char>" can not automatically bind
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("IndexBuffer", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(IndexBuffer, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // virtual StringHash Object::GetType() const =0 | File: ../Core/Object.h
     engine->RegisterObjectMethod("IndexBuffer", "StringHash GetType() const", asMETHODPR(IndexBuffer, GetType, () const, StringHash), asCALL_THISCALL);
@@ -1543,9 +1531,9 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     // void Object::SetBlockEvents(bool block) | File: ../Core/Object.h
     engine->RegisterObjectMethod("IndexBuffer", "void SetBlockEvents(bool)", asMETHODPR(IndexBuffer, SetBlockEvents, (bool), void), asCALL_THISCALL);
     // bool IndexBuffer::SetData(const void* data) | File: ../Graphics/IndexBuffer.h
-    // Error: type "void*" can not automatically bind
+    // Error: type "const void*" can not automatically bind
     // bool IndexBuffer::SetDataRange(const void* data, unsigned start, unsigned count, bool discard=false) | File: ../Graphics/IndexBuffer.h
-    // Error: type "void*" can not automatically bind
+    // Error: type "const void*" can not automatically bind
     // void Object::SetGlobalVar(StringHash key, const Variant& value) | File: ../Core/Object.h
     engine->RegisterObjectMethod("IndexBuffer", "void SetGlobalVar(StringHash, const Variant&in)", asMETHODPR(IndexBuffer, SetGlobalVar, (StringHash, const Variant&), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("IndexBuffer", "void set_globalVar(StringHash, const Variant&in)", asMETHODPR(IndexBuffer, SetGlobalVar, (StringHash, const Variant&), void), asCALL_THISCALL);
@@ -1608,7 +1596,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Input", "const String& GetCategory() const", asMETHODPR(Input, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("Input", "const String& get_category() const", asMETHODPR(Input, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Input", "VariantMap& GetEventDataMap() const", asMETHODPR(Input, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -1701,7 +1689,7 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Input", "bool get_screenKeyboardSupport() const", asMETHODPR(Input, GetScreenKeyboardSupport, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Input", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Input, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // bool Input::GetToggleFullscreen() const | File: ../Input/Input.h
     engine->RegisterObjectMethod("Input", "bool GetToggleFullscreen() const", asMETHODPR(Input, GetToggleFullscreen, () const, bool), asCALL_THISCALL);
@@ -2100,8 +2088,6 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     engine->RegisterObjectProperty("IndexBufferDesc", "uint indexCount", offsetof(IndexBufferDesc, indexCount_));
     // unsigned IndexBufferDesc::indexSize_ | File: ../Graphics/Model.h
     engine->RegisterObjectProperty("IndexBufferDesc", "uint indexSize", offsetof(IndexBufferDesc, indexSize_));
-    // IndexBufferDesc::~IndexBufferDesc() | Implicitly-declared
-    engine->RegisterObjectBehaviour("IndexBufferDesc", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(IndexBufferDesc_Destructor), asCALL_CDECL_OBJFIRST);
     // IndexBufferDesc& IndexBufferDesc::operator=(const IndexBufferDesc&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<IndexBufferDesc>(engine, "IndexBufferDesc");
 #ifdef REGISTER_MANUAL_PART_IndexBufferDesc
@@ -2116,8 +2102,6 @@ void ASRegisterGenerated_Members_I(asIScriptEngine* engine)
     // const Matrix3x4* can not be registered
     // InstanceData::InstanceData(const Matrix3x4* worldTransform, const void* instancingData, float distance) | File: ../Graphics/Batch.h
     // Error: type "const Matrix3x4*" can not automatically bind
-    // InstanceData::~InstanceData() | Implicitly-declared
-    engine->RegisterObjectBehaviour("InstanceData", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(InstanceData_Destructor), asCALL_CDECL_OBJFIRST);
     // InstanceData& InstanceData::operator=(const InstanceData&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<InstanceData>(engine, "InstanceData");
 #ifdef REGISTER_MANUAL_PART_InstanceData

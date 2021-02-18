@@ -322,6 +322,7 @@ template <class T> void ResourceCache::GetResources(PODVector<T*>& result) const
 }
 
 /// Register Resource library subsystems and objects.
+/// @nobind
 void URHO3D_API RegisterResourceLibrary(Context* context);
 
 }

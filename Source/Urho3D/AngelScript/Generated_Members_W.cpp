@@ -12,6 +12,13 @@ namespace Urho3D
 void FakeAddRef(void* ptr);
 void FakeReleaseRef(void* ptr);
 
+// void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void Window_AddTags_StringVector(Window* ptr, CScriptArray* tags_conv)
+{
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->AddTags(tags);
+}
+
 // const Vector<SharedPtr<UIElement>>& UIElement::GetChildren() const | File: ../UI/UIElement.h
 static CScriptArray* Window_GetChildren_void(Window* ptr)
 {
@@ -40,11 +47,18 @@ static CScriptArray* Window_GetTags_void(Window* ptr)
     return VectorToArray<String>(result, "Array<String>");
 }
 
-// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void Window_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Window* ptr, CScriptArray* exceptions, bool onlyUserData)
+// void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
+static void Window_SetTags_StringVector(Window* ptr, CScriptArray* tags_conv)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    StringVector tags = ArrayToVector<String>(tags_conv);
+    ptr->SetTags(tags);
+}
+
+// void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
+static void Window_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(Window* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
+{
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit Window::Window(Context* context) | File: ../UI/Window.h
@@ -54,22 +68,16 @@ static Window* Window_Window_Context()
 }
 
 // void Object::UnsubscribeFromAllEventsExcept(const PODVector<StringHash>& exceptions, bool onlyUserData) | File: ../Core/Object.h
-static void WorkQueue_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(WorkQueue* ptr, CScriptArray* exceptions, bool onlyUserData)
+static void WorkQueue_UnsubscribeFromAllEventsExcept_PODVectorStringHash_bool(WorkQueue* ptr, CScriptArray* exceptions_conv, bool onlyUserData)
 {
-    PODVector<StringHash> param0 = ArrayToPODVector<StringHash>(exceptions);
-    ptr->UnsubscribeFromAllEventsExcept(param0, onlyUserData);
+    PODVector<StringHash> exceptions = ArrayToPODVector<StringHash>(exceptions_conv);
+    ptr->UnsubscribeFromAllEventsExcept(exceptions, onlyUserData);
 }
 
 // explicit WorkQueue::WorkQueue(Context* context) | File: ../Core/WorkQueue.h
 static WorkQueue* WorkQueue_WorkQueue_Context()
 {
     return new WorkQueue(GetScriptContext());
-}
-
-// WindowModeParams::~WindowModeParams() | Implicitly-declared
-static void WindowModeParams_Destructor(WindowModeParams* ptr)
-{
-    ptr->~WindowModeParams();
 }
 
 void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
@@ -83,7 +91,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // void UIElement::AddTags(const String& tags, char separator=';') | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "void AddTags(const String&in, int8 = ';')", asMETHODPR(Window, AddTags, (const String&, char), void), asCALL_THISCALL);
     // void UIElement::AddTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("Window", "void AddTags(Array<String>@+)", asFUNCTION(Window_AddTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void UIElement::AdjustScissor(IntRect& currentScissor) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "void AdjustScissor(IntRect&)", asMETHODPR(Window, AdjustScissor, (IntRect&), void), asCALL_THISCALL);
     // void Serializable::AllocateNetworkState() | File: ../Scene/Serializable.h
@@ -98,7 +106,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // Not registered because template
     // UIElement* UIElement::CreateChild(StringHash type, const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "UIElement@+ CreateChild(StringHash, const String&in = String::EMPTY, uint = M_MAX_UNSIGNED)", asMETHODPR(Window, CreateChild, (StringHash, const String&, unsigned), UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::CreateChild(const String& name=String::EMPTY, unsigned index=M_MAX_UNSIGNED) | File: ../UI/UIElement.h
     // Not registered because template
     // void UIElement::DisableLayoutUpdate() | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "void DisableLayoutUpdate()", asMETHODPR(Window, DisableLayoutUpdate, (), void), asCALL_THISCALL);
@@ -164,11 +172,11 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Window", "UIElement@+ GetChild(const String&in, bool = false) const", asMETHODPR(Window, GetChild, (const String&, bool) const, UIElement*), asCALL_THISCALL);
     // UIElement* UIElement::GetChild(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "UIElement@+ GetChild(const StringHash&in, const Variant&in = Variant::EMPTY, bool = false) const", asMETHODPR(Window, GetChild, (const StringHash&, const Variant&, bool) const, UIElement*), asCALL_THISCALL);
-    // template<class T> T*  UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildDynamicCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntVector2& UIElement::GetChildOffset() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "const IntVector2& GetChildOffset() const", asMETHODPR(Window, GetChildOffset, () const, const IntVector2&), asCALL_THISCALL);
@@ -183,11 +191,11 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // Error: type "PODVector<UIElement*>&" can not automatically bind
     // PODVector<UIElement*> UIElement::GetChildrenWithTag(const String& tag, bool recursive=false) const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "Array<UIElement@>@ GetChildrenWithTag(const String&in, bool = false) const", asFUNCTION(Window_GetChildrenWithTag_String_bool), asCALL_CDECL_OBJFIRST);
-    // template<class T> T*  UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(unsigned index) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const String& name, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
-    // template<class T> T*  UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
+    // template<class T> T* UIElement::GetChildStaticCast(const StringHash& key, const Variant& value=Variant::EMPTY, bool recursive=false) const | File: ../UI/UIElement.h
     // Not registered because template
     // const IntRect& UIElement::GetClipBorder() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "const IntRect& GetClipBorder() const", asMETHODPR(Window, GetClipBorder, () const, const IntRect&), asCALL_THISCALL);
@@ -204,7 +212,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Window", "IntRect GetCombinedScreenRect()", asMETHODPR(Window, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     engine->RegisterObjectMethod("Window", "IntRect get_combinedScreenRect()", asMETHODPR(Window, GetCombinedScreenRect, (), IntRect), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // virtual void UIElement::GetDebugDrawBatches(PODVector<UIBatch>& batches, PODVector<float>& vertexData, const IntRect& currentScissor) | File: ../UI/UIElement.h
     // Error: type "PODVector<UIBatch>&" can not automatically bind
     // XMLFile* UIElement::GetDefaultStyle(bool recursiveUp=true) const | File: ../UI/UIElement.h
@@ -393,7 +401,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Window", "bool get_sortChildren() const", asMETHODPR(Window, GetSortChildren, () const, bool), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("Window", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(Window, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // const StringVector& UIElement::GetTags() const | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "Array<String>@ GetTags() const", asFUNCTION(Window_GetTags_void), asCALL_CDECL_OBJFIRST);
@@ -576,7 +584,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("Window", "int Refs() const", asMETHODPR(Window, Refs, () const, int), asCALL_THISCALL);
     engine->RegisterObjectMethod("Window", "int get_refs() const", asMETHODPR(Window, Refs, () const, int), asCALL_THISCALL);
     // static void Window::RegisterObject(Context* context) | File: ../UI/Window.h
-    // Context can be used as firs parameter of constructors only
+    // Not registered because have @nobind mark
     // void RefCounted::ReleaseRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("Window", asBEHAVE_RELEASE, "void f()", asMETHODPR(Window, ReleaseRef, (), void), asCALL_THISCALL);
     // void UIElement::Remove() | File: ../UI/UIElement.h
@@ -878,7 +886,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // bool UIElement::SetStyleAuto(XMLFile* file=nullptr) | File: ../UI/UIElement.h
     engine->RegisterObjectMethod("Window", "bool SetStyleAuto(XMLFile@+ = null)", asMETHODPR(Window, SetStyleAuto, (XMLFile*), bool), asCALL_THISCALL);
     // void UIElement::SetTags(const StringVector& tags) | File: ../UI/UIElement.h
-    // Error: type "const StringVector&" can not automatically bind
+    engine->RegisterObjectMethod("Window", "void SetTags(Array<String>@+)", asFUNCTION(Window_SetTags_StringVector), asCALL_CDECL_OBJFIRST);
     // void Serializable::SetTemporary(bool enable) | File: ../Scene/Serializable.h
     engine->RegisterObjectMethod("Window", "void SetTemporary(bool)", asMETHODPR(Window, SetTemporary, (bool), void), asCALL_THISCALL);
     engine->RegisterObjectMethod("Window", "void set_temporary(bool)", asMETHODPR(Window, SetTemporary, (bool), void), asCALL_THISCALL);
@@ -988,7 +996,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("WorkQueue", "const String& GetCategory() const", asMETHODPR(WorkQueue, GetCategory, () const, const String&), asCALL_THISCALL);
     engine->RegisterObjectMethod("WorkQueue", "const String& get_category() const", asMETHODPR(WorkQueue, GetCategory, () const, const String&), asCALL_THISCALL);
     // Context* Object::GetContext() const | File: ../Core/Object.h
-    // Error: type "Context*" can not be returned
+    // Error: type "Context*" can used only as function parameter
     // VariantMap& Object::GetEventDataMap() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("WorkQueue", "VariantMap& GetEventDataMap() const", asMETHODPR(WorkQueue, GetEventDataMap, () const, VariantMap&), asCALL_THISCALL);
     // EventHandler* Object::GetEventHandler() const | File: ../Core/Object.h
@@ -996,7 +1004,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // Object* Object::GetEventSender() const | File: ../Core/Object.h
     engine->RegisterObjectMethod("WorkQueue", "Object@+ GetEventSender() const", asMETHODPR(WorkQueue, GetEventSender, () const, Object*), asCALL_THISCALL);
     // SharedPtr<WorkItem> WorkQueue::GetFreeItem() | File: ../Core/WorkQueue.h
-    // TODO
+    // Error: type "SharedPtr<WorkItem>" can not automatically bind
     // const Variant& Object::GetGlobalVar(StringHash key) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("WorkQueue", "const Variant& GetGlobalVar(StringHash) const", asMETHODPR(WorkQueue, GetGlobalVar, (StringHash) const, const Variant&), asCALL_THISCALL);
     engine->RegisterObjectMethod("WorkQueue", "const Variant& get_globalVar(StringHash) const", asMETHODPR(WorkQueue, GetGlobalVar, (StringHash) const, const Variant&), asCALL_THISCALL);
@@ -1009,7 +1017,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectMethod("WorkQueue", "uint GetNumThreads() const", asMETHODPR(WorkQueue, GetNumThreads, () const, unsigned), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
     engine->RegisterObjectMethod("WorkQueue", "Object@+ GetSubsystem(StringHash) const", asMETHODPR(WorkQueue, GetSubsystem, (StringHash) const, Object*), asCALL_THISCALL);
-    // template<class T> T*  Object::GetSubsystem() const | File: ../Core/Object.h
+    // template<class T> T* Object::GetSubsystem() const | File: ../Core/Object.h
     // Not registered because template
     // int WorkQueue::GetTolerance() const | File: ../Core/WorkQueue.h
     engine->RegisterObjectMethod("WorkQueue", "int GetTolerance() const", asMETHODPR(WorkQueue, GetTolerance, () const, int), asCALL_THISCALL);
@@ -1053,7 +1061,7 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     // bool WorkQueue::RemoveWorkItem(SharedPtr<WorkItem> item) | File: ../Core/WorkQueue.h
     // Error: type "SharedPtr<WorkItem>" can not automatically bind
     // unsigned WorkQueue::RemoveWorkItems(const Vector<SharedPtr<WorkItem>>& items) | File: ../Core/WorkQueue.h
-    // TODO
+    // Error: type "const Vector<SharedPtr<WorkItem>>&" can not automatically bind
     // void WorkQueue::Resume() | File: ../Core/WorkQueue.h
     engine->RegisterObjectMethod("WorkQueue", "void Resume()", asMETHODPR(WorkQueue, Resume, (), void), asCALL_THISCALL);
     // void Object::SendEvent(StringHash eventType) | File: ../Core/Object.h
@@ -1112,8 +1120,6 @@ void ASRegisterGenerated_Members_W(asIScriptEngine* engine)
     engine->RegisterObjectProperty("WindowModeParams", "ScreenModeParams screenParams", offsetof(WindowModeParams, screenParams_));
     // int WindowModeParams::width_ | File: ../Graphics/Graphics.h
     engine->RegisterObjectProperty("WindowModeParams", "int width", offsetof(WindowModeParams, width_));
-    // WindowModeParams::~WindowModeParams() | Implicitly-declared
-    engine->RegisterObjectBehaviour("WindowModeParams", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(WindowModeParams_Destructor), asCALL_CDECL_OBJFIRST);
     // WindowModeParams& WindowModeParams::operator=(const WindowModeParams&) | Possible implicitly-declared
     RegisterImplicitlyDeclaredAssignOperatorIfPossible<WindowModeParams>(engine, "WindowModeParams");
 #ifdef REGISTER_MANUAL_PART_WindowModeParams
