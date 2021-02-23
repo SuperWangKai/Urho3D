@@ -844,7 +844,7 @@ void ASRegisterGenerated_Members_F(asIScriptEngine* engine)
 
     // KAI: FIXME!
     // void FileWatcher::AddChange(const String& fileName) | File: ../IO/FileWatcher.h
-    //engine->RegisterObjectMethod("FileWatcher", "void AddChange(const FileChange&in)", asMETHODPR(FileWatcher, AddChange, (const FileChange&), void), asCALL_THISCALL);
+    engine->RegisterObjectMethod("FileWatcher", "void AddChange(const FileChange&in)", asMETHODPR(FileWatcher, AddChange, (const FileChange&), void), asCALL_THISCALL);
     // void RefCounted::AddRef() | File: ../Container/RefCounted.h
     engine->RegisterObjectBehaviour("FileWatcher", asBEHAVE_ADDREF, "void f()", asMETHODPR(FileWatcher, AddRef, (), void), asCALL_THISCALL);
     // template<typename T> T* Object::Cast() | File: ../Core/Object.h
@@ -879,7 +879,7 @@ void ASRegisterGenerated_Members_F(asIScriptEngine* engine)
     
     // KAI: FIXME!
     // bool FileWatcher::GetNextChange(String& dest) | File: ../IO/FileWatcher.h
-    //engine->RegisterObjectMethod("FileWatcher", "bool GetNextChange(FileChange&)", asMETHODPR(FileWatcher, GetNextChange, (FileChange&), bool), asCALL_THISCALL);
+    engine->RegisterObjectMethod("FileWatcher", "bool GetNextChange(FileChange&)", asMETHODPR(FileWatcher, GetNextChange, (FileChange&), bool), asCALL_THISCALL);
     // const String& FileWatcher::GetPath() const | File: ../IO/FileWatcher.h
     engine->RegisterObjectMethod("FileWatcher", "const String& GetPath() const", asMETHODPR(FileWatcher, GetPath, () const, const String&), asCALL_THISCALL);
     // Object* Object::GetSubsystem(StringHash type) const | File: ../Core/Object.h
