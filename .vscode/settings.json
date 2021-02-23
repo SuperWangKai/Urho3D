@@ -1,0 +1,10 @@
+{
+    "cmake.configureArgs": [
+        "-DURHO3D_LUA=0",
+        "-DURHO3D_LUAJIT=0",
+        "-DURHO3D_TRACY_PROFILING=1",
+        "-DURHO3D_OPENGL=1",
+        "-DURHO3D_DATABASE_SQLITE=1"
+    ],
+    "cmake.buildDirectory": "${workspaceFolder}/../DevBuild/LibUrho3D"
+}
